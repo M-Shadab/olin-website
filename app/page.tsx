@@ -216,7 +216,7 @@ export default function Home() {
             {/* Pillar 1 */}
             <div className="group px-6 md:px-12 py-8 md:py-4 text-center">
               <div className="mb-6 text-gold flex justify-center group-hover:-translate-y-1 transition-transform duration-500">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Consistent Quality</h3>
               <p className="text-gray-500 leading-relaxed font-light">Every linen, every day. Industrial consistency with boutique care.</p>
@@ -247,49 +247,48 @@ export default function Home() {
       <section className="py-24 px-6 bg-off-white">
         <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-playfair font-medium text-navy mb-16 text-center">Service Architecture</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Active Card 1 */}
-                <div className="bg-white p-8 border border-black/5 hover:shadow-xl transition-all duration-300">
-                    <span className="inline-block px-3 py-1 bg-navy/5 text-navy text-xs font-bold tracking-widest uppercase mb-6 rounded-sm">Active</span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Laundry & Linen</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">High-capacity washing, precision pressing, and spotless delivery.</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black/10">
+                {/* Item 1 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">01</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Laundry & Linen</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">High-capacity washing, precision pressing, and spotless delivery specific to your inventory.</p>
                 </div>
-                 {/* Active Card 2 */}
-                <div className="bg-white p-8 border border-black/5 hover:shadow-xl transition-all duration-300">
-                    <span className="inline-block px-3 py-1 bg-navy/5 text-navy text-xs font-bold tracking-widest uppercase mb-6 rounded-sm">Active</span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Supply & Rotation</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Inventory management ensuring you never run short of essentials.</p>
+                
+                 {/* Item 2 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">02</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Supply & Rotation</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">Automated inventory management ensuring you never run short of daily essentials.</p>
                 </div>
-                 {/* Active Card 3 */}
-                <div className="bg-white p-8 border border-black/5 hover:shadow-xl transition-all duration-300">
-                    <span className="inline-block px-3 py-1 bg-navy/5 text-navy text-xs font-bold tracking-widest uppercase mb-6 rounded-sm">Active</span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Guest Room Support</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Beyond just sheets—duvets, robes, and specialized room textiles.</p>
+                
+                 {/* Item 3 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">03</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Guest Room Support</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">Beyond just sheets—duvets, robes, and specialized room textiles handled with care.</p>
                 </div>
 
-                {/* Coming Soon Card 1 */}
-                <div className="bg-white p-8 border border-black/5 group cursor-default">
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-400 text-xs font-bold tracking-widest uppercase mb-6 rounded-sm group-hover:bg-gold/10 group-hover:text-gold transition-colors">
-                        <span className="group-hover:animate-pulse">Coming Soon</span>
-                    </span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Amenity Curations</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Curated bathroom and room amenities from premium brands.</p>
+                {/* Item 4 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">04</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Amenity Curations</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">Curated bathroom and room amenities from premium brands, packaged for your brand.</p>
                 </div>
-                 {/* Coming Soon Card 2 */}
-                <div className="bg-white p-8 border border-black/5 group cursor-default">
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-400 text-xs font-bold tracking-widest uppercase mb-6 rounded-sm group-hover:bg-gold/10 group-hover:text-gold transition-colors">
-                        <span className="group-hover:animate-pulse">Coming Soon</span>
-                    </span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Facility Supply</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Housekeeping carts, cleaning chemicals, and staff uniforms.</p>
+                
+                 {/* Item 5 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">05</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Facility Supply</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">Housekeeping carts, cleaning chemicals, and staff uniforms sourced and delivered.</p>
                 </div>
-                 {/* Coming Soon Card 3 */}
-                <div className="bg-white p-8 border border-black/5 group cursor-default">
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-400 text-xs font-bold tracking-widest uppercase mb-6 rounded-sm group-hover:bg-gold/10 group-hover:text-gold transition-colors">
-                        <span className="group-hover:animate-pulse">Coming Soon</span>
-                    </span>
-                    <h3 className="text-xl font-playfair font-semibold text-navy mb-4">Sustainable Green-Care</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Eco-friendly processing options reducing water and energy usage.</p>
+                
+                 {/* Item 6 */}
+                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
+                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">06</span>
+                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Sustainable Green-Care</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">Eco-friendly processing options significantly reducing water and energy usage.</p>
                 </div>
             </div>
         </div>
@@ -301,7 +300,7 @@ export default function Home() {
         <div className="w-full md:w-1/2 relative min-h-[400px]">
             <div className="absolute inset-0 bg-navy">
                  {/* Placeholder for "Candid, high-end photo of Alba staff inspecting quality" */}
-                 <div className="absolute inset-0 opacity-60 mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center" />
+                 <div className="absolute inset-0 bg-[url('/imgs/hygiene-img.png')] bg-cover bg-center" />
             </div>
         </div>
         
