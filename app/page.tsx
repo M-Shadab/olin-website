@@ -36,6 +36,7 @@ export default function Home() {
                   Member Login
               </a>
               <button
+                onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`px-6 py-2.5 text-xs font-bold tracking-[0.15em] uppercase text-white transition-all duration-500 transform ${
                   showStickyButton
                     ? "translate-y-0 opacity-100"
@@ -67,7 +68,10 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="px-10 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1">
+              <button 
+                onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1"
+              >
                 Partner With Us
               </button>
               <button className="group px-10 py-5 text-white border border-white/20 hover:border-white hover:bg-white/5 transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase rounded-sm cursor-pointer flex items-center gap-3">
@@ -253,10 +257,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Grid: "Service Architecture" */}
+      {/* The Grid: "The OPAL Framework" */}
       <section className="py-24 px-6 bg-off-white">
         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-playfair font-medium text-navy mb-16 text-center">Service Architecture</h2>
+            <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy mb-16 text-center">The OPAL Framework</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black/10">
                 {/* Item 1 */}
@@ -346,7 +350,7 @@ export default function Home() {
       </section>
 
       {/* The Closer: "Simplification" */}
-      <section className="py-32 px-6 bg-white flex flex-col items-center justify-center">
+      <section id="partner-form" className="py-32 px-6 bg-white flex flex-col items-center justify-center">
         <div className="w-full max-w-4xl bg-white p-12 md:p-24 shadow-2xl shadow-navy/5 border border-black/5">
           <div className="text-center mb-16">
              <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Initiate Partnership</span>
