@@ -97,14 +97,14 @@ export default function Header() {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-navy z-40 flex flex-col items-center justify-center transition-opacity duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-navy z-40 flex flex-col items-center justify-center transition-opacity duration-100 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
            <nav className="flex flex-col items-center gap-8 text-white/80">
               <Link href="/" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Home
               </Link>
-              <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
+              {/* <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Expertise
-              </a>
+              </a> */}
               <Link href="/vision" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Vision
               </Link>
