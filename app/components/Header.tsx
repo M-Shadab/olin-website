@@ -48,7 +48,7 @@ export default function Header() {
           {/* <a href="#" className="hover:text-navy transition-colors">
             The Standard
           </a> */}
-          <Link href="/about" className="hover:text-navy transition-colors">
+          <Link href="/vision" className="hover:text-navy transition-colors">
             Vision
           </Link>
           {/* <a href="#" className="hover:text-navy transition-colors">
