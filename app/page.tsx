@@ -18,28 +18,33 @@ export default function Home() {
   return (
     <div className="min-h-screen font-sans text-foreground bg-background selection:bg-gold selection:text-white">
       {/* Sticky Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-black/5">
-        <div className="text-2xl font-bold font-playfair tracking-tighter text-navy flex items-center gap-2">
-          {/* ALBS */}
-          {/* OPAL */}
-          <img src="/imgs/logo.png" alt="ALBA" height="44" className="w-16" />
-          <p>OPAL Hospitality Services</p>
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 bg-white/95 backdrop-blur-sm border-b border-black/5">
+        <div className="flex items-baseline gap-1">
+            <span className="text-2xl font-playfair font-bold text-navy tracking-tight">OPAL.</span>
+            <span className="hidden md:inline-block text-xs font-mono text-gray-400 uppercase tracking-widest pl-2">Hospitality</span>
         </div>
-        <div className="flex items-center gap-5">
-          <nav className="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-600">
-            <a href="#" className="hover:text-navy transition-colors">Services</a>
-            <a href="#" className="hover:text-navy transition-colors">About</a>
-            <a href="#" className="hover:text-navy transition-colors">Testimonials</a>
+        
+        <div className="flex items-center gap-8">
+          <nav className="hidden md:flex gap-8 text-xs font-bold tracking-[0.15em] uppercase text-navy/60">
+            <a href="#" className="hover:text-navy transition-colors">Expertise</a>
+            <a href="#" className="hover:text-navy transition-colors">The Standard</a>
+            <a href="#" className="hover:text-navy transition-colors">Stories</a>
           </nav>
-          <button
-            className={`px-6 py-2 text-sm font-medium text-white transition-all duration-500 transform ${
-              showStickyButton
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-4 opacity-0 pointer-events-none"
-            } bg-gold hover:bg-[#C5A028] shadow-md rounded-sm cursor-pointer`}
-          >
-            Instant Quote
-          </button>
+          
+          <div className="flex items-center gap-6 pl-6 border-l border-black/5">
+              <a href="#" className="hidden md:block text-xs font-medium text-navy/40 hover:text-navy transition-colors">
+                  Member Login
+              </a>
+              <button
+                className={`px-6 py-2.5 text-xs font-bold tracking-[0.15em] uppercase text-white transition-all duration-500 transform ${
+                  showStickyButton
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-0 opacity-100" // Always show for now to maintain premium feel, or keep dynamic if preferred. Let's keep it visible for "Inquire"
+                } bg-navy hover:bg-gold transition-colors shadow-sm rounded-sm cursor-pointer`}
+              >
+                Inquire
+              </button>
+          </div>
         </div>  
       </header>
 
