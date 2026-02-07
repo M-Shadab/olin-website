@@ -70,14 +70,17 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button 
                 onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-10 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1"
+                className="px-20 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1 cursor-pointer"
               >
                 Partner With Us
               </button>
-              <button className="group px-10 py-5 text-white border border-white/20 hover:border-white hover:bg-white/5 transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase rounded-sm cursor-pointer flex items-center gap-3">
+              {/* <button 
+                onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group px-10 py-5 text-white border border-white/20 hover:border-white hover:bg-white/5 transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase rounded-sm cursor-pointer flex items-center gap-3 cursor-pointer"
+              >
                 <span className="opacity-80 group-hover:opacity-100 transition-opacity">Visual Audit</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
+              </button> */}
             </div>
 
             {/* Trust Anchor / Social Proof */}
@@ -478,7 +481,7 @@ export default function Home() {
              <div className="pt-8 text-center">
                  <button 
                     type="button"
-                    className="px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm"
+                    className="px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm cursor-pointer"
                  >
                     Request Proposal
                  </button>
