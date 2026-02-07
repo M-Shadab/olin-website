@@ -1,0 +1,70 @@
+🏗️ Design System: The Alba "Anti-Gravity" Layout
+CORE VIBE: Editorial Minimalism. High White Space. High-Trust B2B.
+
+[00] Global Styles
+Palette: Midnight Navy (#1A2B3C), Muted Gold (#D4AF37), Pure White (#FFFFFF).
+
+Typography: Playfair Display (H1-H3) / Inter (Body).
+
+UX Secret: Sticky Navigation Header with an "Instant Quote" button that only appears after scrolling 300px.
+
+[01] The Hero: "The First Impression"
+Layout: Full-height (100vh) split-screen or 40% Navy Gradient Overlay.
+
+Visual: Ultra-HD background of a crisp white linen fold.
+
+Copy: * H1: Hotel-Grade Hospitality. Ready When You Are.
+
+Sub-text: Scaling professional linen and guest support for boutique gems and premium icons.
+
+CTA Group: * Primary (Gold): [Request a Quote]
+
+Secondary (Ghost): [Watch Process Video]
+
+[02] The Social Proof Bar (Anti-Gravity Float)
+Layout: Floating horizontal strip; subtle drop shadow.
+
+Content: Grayscale logos of flagship properties.
+
+Text: Trusted by Independent & Flagship Properties.
+
+[03] The Pillars: "Built for Demands"
+Structure: 3-Column Grid.
+
+Interaction: Vertical "float" on hover. | Pillar | The Standard | The Promise | The Scale | | :--- | :--- | :--- | :--- | | Headline | Consistent Quality | Reliable Timing | Adaptive Solutions | | Sub | Every linen, every day. | GPS-tracked logistics. | From 10 rooms to 500. | | Icon | [Needle & Thread] | [Precision Clock] | [Scale Icon] |
+
+[04] The Grid: "Service Architecture"
+Background: Off-white (#F9F9F9).
+
+Interaction: "Coming Soon" cards are 50% opacity until hovered; tags have a soft pulse animation.
+
+Active Cards: Laundry & Linen, Supply & Rotation, Guest Room Support.
+
+Future Cards: Amenity Curations, Facility Supply, Sustainable Green-Care.
+
+[05] The Human Element: "Silent Partner"
+Layout: 50/50 Split.
+
+Visual (Left): Candid, high-end photo of Alba staff inspecting quality.
+
+Copy (Right):
+
+H3: Your Silent Partner in Excellence.
+
+Body: "We bridge the gap between industrial scale and boutique attention. Your reputation begins with the first thing a guest touches."
+
+Link: [Our Hygiene Standards →] (Underline on hover).
+
+[06] The Proof: "Operational Echo"
+Layout: Full-width Midnight Navy block.
+
+Visual: Large Serif quotation marks in 10% opacity Gold.
+
+Testimonial: "Alba is an extension of our own housekeeping team." — GM, The Evergreen Suites.
+
+[07] The Closer: "Simplification"
+Layout: Centered Minimalist Form.
+
+Form Fields: Inline labels, bottom-border only (no boxes).
+
+Button: Full-width or Large centered [Get My Custom Quote].
