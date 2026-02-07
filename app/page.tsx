@@ -16,8 +16,8 @@ export default function Home() {
         {/* Background - Simulating "Crisp white linen fold" with a high-quality abstract placeholder or color */}
         <div className="absolute inset-0 z-0 bg-navy">
              {/* Gradient Overlay for Depth */}
-            <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" />
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/90 z-10 pointer-events-none" /> */}
+            <div className="absolute inset-0 bg-gradient-to-b from-navy/5 md:from-navy/30 md:via-transparent md:to-navy/80 to-navy/90 z-10 pointer-events-none" />
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" /> */}
             {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" /> */}
              {/* Hero Image */}
             {/* <Image
