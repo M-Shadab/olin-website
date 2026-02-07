@@ -50,7 +50,7 @@ export default function Home() {
         <div className="relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20">
            {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/90 z-10 pointer-events-none" /> */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white mb-8 tracking-tight leading-tight">
-              The Invisible Standard.
+              The Invisible Standard <br/><span className="text-gray-100 md:text-white text-[2rem] md:text-[3rem] lg:text-[4rem]">in Hotel Operations.</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-16 tracking-wide opacity-90">
               Orchestrating hospitality excellence for the world's most demanding properties.
