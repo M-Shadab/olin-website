@@ -49,36 +49,41 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative w-full h-[560px] flex justify-center overflow-hidden mt-16">
+      <section className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
         {/* Background - Simulating "Crisp white linen fold" with a high-quality abstract placeholder or color */}
-        <div className="absolute inset-0 z-0 bg-off-white">
-             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-navy/40 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 z-0 bg-navy">
+             {/* Gradient Overlay for Depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" />
              {/* Hero Image */}
-            <div className="absolute inset-0 bg-[url('/imgs/hero.png')] bg-cover bg-center" />
+            <div className="absolute inset-0 bg-[url('/imgs/hero.png')] bg-cover bg-center opacity-90" />
         </div>
 
-        <div className="relative z-20 w-full max-w-7xl px-6 md:px-12 pt-20">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-5xl font-playfair font-bold leading-[1.1] text-white mb-8">
-              Hotel-Grade Hospitality. <br />
-              <span className="text-white">Ready When You Are.</span>
+        <div className="relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white mb-8 tracking-tight leading-tight">
+              The Invisible Standard.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 font-light leading-relaxed max-w-2xl mb-12">
-              Scaling professional linen and guest support for boutique gems and
-              premium icons.
+            <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-16 tracking-wide opacity-90">
+              Orchestrating hospitality excellence for the world's most demanding properties.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-5">
-              <button className="px-8 py-4 text-white bg-gold hover:bg-[#C5A028] transition-colors text-lg font-medium tracking-wide shadow-lg rounded-sm cursor-pointer">
-                Request a Quote
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button className="px-10 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1">
+                Partner With Us
               </button>
-              <button className="px-8 py-4 text-gray-200 border border-gray-200/20 hover:border-gray-200 hover:bg-gray-200/5 transition-all text-lg font-medium tracking-wide rounded-sm flex items-center gap-3 cursor-pointer">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                Watch Process Video
+              <button className="group px-10 py-5 text-white border border-white/20 hover:border-white hover:bg-white/5 transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase rounded-sm cursor-pointer flex items-center gap-3">
+                <span className="opacity-80 group-hover:opacity-100 transition-opacity">Visual Audit</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
             </div>
-          </div>
+
+            {/* Trust Anchor / Social Proof */}
+            <div className="mt-32 flex justify-center items-center gap-8 md:gap-16 opacity-60">
+                <span className="text-xs font-mono text-white uppercase tracking-widest">San Francisco</span>
+                <span className="w-1 h-1 bg-gold rounded-full"></span>
+                <span className="text-xs font-mono text-white uppercase tracking-widest">Napa Valley</span>
+                <span className="w-1 h-1 bg-gold rounded-full"></span>
+                <span className="text-xs font-mono text-white uppercase tracking-widest">Sonoma</span>
+            </div>
         </div>
       </section>
 
