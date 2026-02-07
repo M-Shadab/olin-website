@@ -95,7 +95,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Laundry & Linen</h3>
+                 <h3 className="font-playfair text-xl text-gray-300 md:text-navy mb-2 group-hover:text-gold transition-colors duration-300">Laundry & Linen</h3>
                  <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Spotless Daily Service</span>
              </div>
 
@@ -110,7 +110,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Room Support</h3>
+                 <h3 className="font-playfair text-xl text-gray-300 md:text-navy mb-2 group-hover:text-gold transition-colors duration-300">Room Support</h3>
                  <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Textiles & Robes</span>
              </div>
 
@@ -125,7 +125,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Housekeeping</h3>
+                 <h3 className="font-playfair text-xl text-gray-300 md:text-navy mb-2 group-hover:text-gold transition-colors duration-300">Housekeeping</h3>
                  <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Staff Augmentation</span>
              </div>
 
@@ -140,7 +140,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Facility Supply</h3>
+                 <h3 className="font-playfair text-xl text-gray-300 md:text-navy mb-2 group-hover:text-gold transition-colors duration-300">Facility Supply</h3>
                  <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Chemicals & Carts</span>
              </div>
 
@@ -155,7 +155,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Sustainability</h3>
+                 <h3 className="font-playfair text-xl text-gray-300 md:text-navy mb-2 group-hover:text-gold transition-colors duration-300">Sustainability</h3>
                  <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Eco-Certified Process</span>
              </div>
            </div>
