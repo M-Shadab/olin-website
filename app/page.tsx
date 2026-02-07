@@ -97,112 +97,82 @@ export default function Home() {
       {/* Service Visuals Row */}
       <section className="w-full px-6 -mt-20 relative z-30">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-             {/* Card 1: Laundry & Linen */}
-             <div className="group bg-white border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 rounded-sm overflow-hidden">
-                 <div className="relative aspect-square overflow-hidden bg-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
+             {/* Item 1: Laundry & Linen */}
+             <div className="group cursor-pointer flex flex-col items-center">
+                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-1.png" 
                       alt="Premium Towels" 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 bg-white p-3 w-10 h-10 flex items-center justify-center shadow-sm rounded-sm">
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-navy"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </div>
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <div className="p-6">
-                    <h3 className="font-playfair text-lg font-medium text-navy mb-3">Laundry & Linen Care</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed font-light">
-                      Industrial washing with boutique care. Crisp, spotless, and always on time.
-                    </p>
-                 </div>
+                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Laundry & Linen</h3>
+                 <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Spotless Daily Service</span>
              </div>
 
-             {/* Card 2: Guest Room Support */}
-             <div className="group bg-white border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 rounded-sm overflow-hidden">
-                 <div className="relative aspect-square overflow-hidden bg-gray-100">
+             {/* Item 2: Guest Room Support */}
+             <div className="group cursor-pointer flex flex-col items-center">
+                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-2.png" 
                       alt="Staff Support" 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 bg-white p-3 w-10 h-10 flex items-center justify-center shadow-sm rounded-sm">
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-navy"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <div className="p-6">
-                    <h3 className="font-playfair text-lg font-medium text-navy mb-3">Guest Room Support</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed font-light">
-                      Extra towels, robes, and specialized textiles delivered directly to closets.
-                    </p>
-                 </div>
+                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Room Support</h3>
+                 <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Textiles & Robes</span>
              </div>
 
-             {/* Card 3: Housekeeping Support */}
-             <div className="group bg-white border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 rounded-sm overflow-hidden">
-                 <div className="relative aspect-square overflow-hidden bg-gray-100">
+             {/* Item 3: Housekeeping */}
+             <div className="group cursor-pointer flex flex-col items-center">
+                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-3.png" 
                       alt="Housekeeping" 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 bg-white p-3 w-10 h-10 flex items-center justify-center shadow-sm rounded-sm">
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-navy"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
-                    </div>
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <div className="p-6">
-                    <h3 className="font-playfair text-lg font-medium text-navy mb-3">Housekeeping Support</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed font-light">
-                      Professional staff augmentation to ensure rooms are turned over flawlessly.
-                    </p>
-                 </div>
+                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Housekeeping</h3>
+                 <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Staff Augmentation</span>
              </div>
 
-             {/* Card 4: Facility Supply */}
-             <div className="group bg-white border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 rounded-sm overflow-hidden">
-                 <div className="relative aspect-square overflow-hidden bg-gray-100">
+             {/* Item 4: Facility Supply */}
+             <div className="group cursor-pointer flex flex-col items-center">
+                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-4.png" 
                       alt="Amenities" 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 bg-white p-3 w-10 h-10 flex items-center justify-center shadow-sm rounded-sm">
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-navy"><path d="M2 20h20"></path><path d="M5 20v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"></path><path d="M10 13V8a2 2 0 0 0-2-2 2 2 0 0 0-2 2v5"></path></svg>
-                    </div>
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <div className="p-6">
-                    <h3 className="font-playfair text-lg font-medium text-navy mb-3">Facility Supply</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed font-light">
-                      From cleaning chemicals to carts, we supply the backbone of your operations.
-                    </p>
-                 </div>
+                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Facility Supply</h3>
+                 <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Chemicals & Carts</span>
              </div>
 
-             {/* Card 5: Sustainable Solutions */}
-             <div className="group bg-white border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 rounded-sm overflow-hidden">
-                 <div className="relative aspect-square overflow-hidden bg-gray-100">
+             {/* Item 5: Sustainability */}
+             <div className="group cursor-pointer flex flex-col items-center">
+                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-5.png" 
                       alt="Sustainability" 
                       fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
-                    <div className="absolute bottom-4 right-4 bg-white p-3 w-10 h-10 flex items-center justify-center shadow-sm rounded-sm">
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-navy"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    </div>
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
-                 <div className="p-6">
-                    <h3 className="font-playfair text-lg font-medium text-navy mb-3">Sustainable Solutions</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed font-light">
-                      Green-certified processes that reduce water use and environmental impact.
-                    </p>
-                 </div>
+                 <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-300">Sustainability</h3>
+                 <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">Eco-Certified Process</span>
              </div>
-          </div>
+           </div>
         </div>
       </section>
       {/* <section className="relative z-30 -mt-20 px-6">
