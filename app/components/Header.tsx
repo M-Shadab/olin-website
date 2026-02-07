@@ -51,7 +51,7 @@ export default function Header() {
             <a href="#" className="hover:text-navy transition-colors">
               Expertise
             </a>
-            <Link href="/vision" className="hover:text-navy transition-colors">
+            <Link href="/founder" className="hover:text-navy transition-colors">
               Vision
             </Link>
           </nav>
@@ -105,8 +105,8 @@ export default function Header() {
               {/* <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Expertise
               </a> */}
-              <Link href="/vision" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
-                Vision
+              <Link href="/founder" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
+                Founder
               </Link>
               <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Member Login
