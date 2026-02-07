@@ -12,10 +12,37 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+// export const metadata: Metadata = {
+//   title: "Opal Hospitality | Hotel Services & Operational Support",
+//   description: "Opal Hospitality is a hospitality support partner delivering hotel laundry, linen care, and back-of-house services for modern hotels.",
+// };
+
 export const metadata: Metadata = {
-  title: "Opal Hospitality | Hotel Services & Operational Support",
-  description: "Opal Hospitality is a hospitality support partner delivering hotel laundry, linen care, and back-of-house services for modern hotels.",
-};
+  title:  "Opal Hospitality | Hotel Services & Operational Support",
+  description: 'Reliable hotel Services and Operational Support for modern hotels.',
+  openGraph: {
+    title: 'Opal Hospitality | Hotel Services & Operational Support',
+    description: 'Reliable hotel Services and Operational Support for modern hotels.',
+    url: 'https://www.opal-hospitality.in',
+    siteName: 'Opal Hospitality',
+    images: [
+      {
+        url: '/og-image-1.jpg', // Path to your OG image
+        width: 1200,
+        height: 630,
+        alt: 'Opal Hospitality | Hotel Services & Operational Support',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Opal Hospitality | Hotel Services & Operational Support',
+    description: 'Reliable hotel Services and Operational Support for modern hotels.',
+    images: ['/og-image.png'],
+  },
+}
+
 
 export default function RootLayout({
   children,
