@@ -337,69 +337,224 @@ export default function Home() {
 
       {/* The Closer: "Simplification" */}
       <section className="py-32 px-6 bg-white flex flex-col items-center justify-center">
-        <div className="w-full max-w-2xl bg-off-white p-12 md:p-20 rounded-sm shadow-sm border border-black/5">
-          <h2 className="text-3xl font-playfair text-navy mb-12 text-center">Get Your Custom Quote</h2>
+        <div className="w-full max-w-4xl bg-white p-12 md:p-24 shadow-2xl shadow-navy/5 border border-black/5">
+          <div className="text-center mb-16">
+             <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Initiate Partnership</span>
+             <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy">Partner with OPAL</h2>
+          </div>
+          
           <form className="space-y-12">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div className="relative">
+                <div className="relative group">
                   <input 
                     type="text" 
                     id="name" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-2 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
                     placeholder="Name"
                   />
                   <label 
                     htmlFor="name" 
-                    className="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-500 peer-focus:text-sm"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
-                    Name
+                    Full Name
                   </label>
                 </div>
-                <div className="relative">
+                
+                <div className="relative group">
                   <input 
                     type="email" 
                     id="email" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-2 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
                     placeholder="Email"
                   />
                   <label 
                     htmlFor="email" 
-                    className="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-500 peer-focus:text-sm"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Work Email
                   </label>
                 </div>
+                
+                <div className="relative group">
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    placeholder="Phone"
+                  />
+                  <label 
+                    htmlFor="phone" 
+                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                  >
+                    Direct Phone
+                  </label>
+                </div>
+
+                <div className="relative group">
+                  <input 
+                    type="text" 
+                    id="website" 
+                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    placeholder="Website"
+                  />
+                  <label 
+                    htmlFor="website" 
+                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                  >
+                    Company Website/Hotel Name
+                  </label>
+                </div>
              </div>
 
-             <div className="relative">
-                <input 
-                  type="text" 
-                  id="property" 
-                  className="peer w-full bg-transparent border-b border-gray-300 py-2 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent"
-                  placeholder="Property Name"
-                />
-                <label 
-                  htmlFor="property" 
-                  className="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-500 peer-focus:text-sm"
-                >
-                  Property Name
-                </label>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 <div className="relative group">
+                    <select 
+                        id="rooms" 
+                        className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors text-lg appearance-none rounded-none"
+                    >
+                        <option value="" disabled selected>Select Capacity</option>
+                        <option value="10-50">10 - 50 Rooms</option>
+                        <option value="50-100">50 - 100 Rooms</option>
+                        <option value="100-250">100 - 250 Rooms</option>
+                        <option value="250+">250+ Rooms</option>
+                    </select>
+                    <label 
+                        htmlFor="rooms" 
+                        className="absolute left-0 -top-3.5 text-gold text-xs tracking-widest uppercase"
+                    >
+                        Room Count
+                    </label>
+                 </div>
+
+                 <div className="relative group">
+                    <select 
+                        id="service" 
+                        className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors text-lg appearance-none rounded-none"
+                    >
+                        <option value="" disabled selected>Primary Interest</option>
+                        <option value="laundry">Laundry & Linen</option>
+                        <option value="staffing">Staffing Solutions</option>
+                        <option value="amenities">Amenity Curation</option>
+                        <option value="full-suite">Full OPAL Suite</option>
+                    </select>
+                    <label 
+                        htmlFor="service" 
+                        className="absolute left-0 -top-3.5 text-gold text-xs tracking-widest uppercase"
+                    >
+                        Service Interest
+                    </label>
+                 </div>
+             </div>
+             
+             <div className="relative group pt-4">
+                  <textarea 
+                    id="message" 
+                    rows={1}
+                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg resize-none min-h-[60px]"
+                    placeholder="Message"
+                  ></textarea>
+                  <label 
+                    htmlFor="message" 
+                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                  >
+                    Specific Requirements or Questions
+                  </label>
              </div>
 
-             <button 
-                type="button"
-                className="w-full py-4 bg-navy text-white font-medium tracking-widest hover:bg-gold transition-colors duration-300 rounded-sm mt-8"
-             >
-                Get My Custom Quote
-             </button>
+             <div className="pt-8 text-center">
+                 <button 
+                    type="button"
+                    className="px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm"
+                 >
+                    Request Proposal
+                 </button>
+                 <p className="mt-6 text-xs text-gray-400 font-light">
+                    Our team typically responds within 4 business hours.
+                 </p>
+             </div>
           </form>
         </div>
       </section>
 
-      {/* Footer Simple */}
-      <footer className="bg-navy text-white/40 py-8 text-center text-sm">
-        {/* <p>&copy; {new Date().getFullYear()} Alba Linen Services. All rights reserved.</p> */}
-        <p>&copy; {new Date().getFullYear()} OPAL Hospitality Services. All rights reserved.</p>
+      {/* Footer Professional */}
+      <footer className="bg-navy text-white pt-24 pb-12 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+                {/* Col 1: Brand */}
+                <div className="col-span-1 md:col-span-1">
+                    <h3 className="text-2xl font-playfair text-white mb-6">OPAL</h3>
+                    <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
+                        The silent partner in hospitality excellence. enhancing guest experience through invisible perfection.
+                    </p>
+                    <div className="flex gap-4">
+                        {/* Placeholder Social Icons */}
+                        <div className="w-8 h-8 rounded-full bg-white/5 hover:bg-gold/20 transition-colors flex items-center justify-center text-gold cursor-pointer">
+                            <span className="sr-only">LinkedIn</span>
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white/5 hover:bg-gold/20 transition-colors flex items-center justify-center text-gold cursor-pointer">
+                            <span className="sr-only">Twitter</span>
+                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Col 2: Company */}
+                <div className="col-span-1 md:col-span-1 md:ml-auto">
+                    <h4 className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-6">Company</h4>
+                    <ul className="space-y-4 text-sm text-white/60 font-light">
+                        <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="#" className="hover:text-gold transition-colors">Our Standard</a></li>
+                        <li><a href="#" className="hover:text-gold transition-colors">Sustainability</a></li>
+                        <li><a href="#" className="hover:text-gold transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                {/* Col 3: Legal */}
+                <div className="col-span-1 md:col-span-1">
+                    <h4 className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-6">Legal</h4>
+                    <ul className="space-y-4 text-sm text-white/60 font-light">
+                        <li><a href="#" className="hover:text-gold transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" className="hover:text-gold transition-colors">Terms of Service</a></li>
+                        <li><a href="#" className="hover:text-gold transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                {/* Col 4: Contact */}
+                <div className="col-span-1 md:col-span-1">
+                    <h4 className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-6">Contact</h4>
+                     <ul className="space-y-4 text-sm text-white/60 font-light">
+                        <li className="flex items-start gap-3">
+                            <span className="text-gold mt-1">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </span>
+                            +1 (800) 555-0199
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="text-gold mt-1">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </span>
+                            partners@opal-hospitality.com
+                        </li>
+                        <li className="flex items-start gap-3">
+                             <span className="text-gold mt-1">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                             </span>
+                             123 Hospitality Lane, Suite 100<br/>San Francisco, CA 94107
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-white/20 text-xs font-light tracking-wide">
+                    &copy; {new Date().getFullYear()} OPAL Hospitality Services. All rights reserved.
+                </p>
+                <p className="text-white/20 text-xs font-light tracking-wide">
+                    Designed for Excellence.
+                </p>
+            </div>
+        </div>
       </footer>
     </div>
   );
