@@ -18,11 +18,28 @@ export default function Home() {
              {/* Gradient Overlay for Depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" />
              {/* Hero Image */}
-            <Image
+            {/* <Image
               src="/imgs/hero.png"
               alt="Background"
               fill
               className="object-cover opacity-90"
+              priority
+            /> */}
+            {/* Desktop Hero image */}
+            <Image
+              src="/imgs/hero.png"
+              alt="Background"
+              fill
+              className="object-cover opacity-90 hidden md:block"
+              priority
+            />
+
+            {/* Mobile Hero image */}
+            <Image
+              src="/imgs/hero-mobile.jpg"
+              alt="Background mobile"
+              fill
+              className="object-cover opacity-90 block md:hidden"
               priority
             />
         </div>
