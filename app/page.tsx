@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* The Grid: "The OPAL Framework" */}
-      <section className="py-24 px-6 bg-off-white">
+      <section className="py-24 px-6 bg-off-white bg-noise">
         <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy mb-16 text-center">The OPAL Framework</h2>
             
