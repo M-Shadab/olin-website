@@ -12,11 +12,13 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[720px] md:h-screen md:min-h-[800px] flex items-center justify-center overflow-hidden">
         {/* Background - Simulating "Crisp white linen fold" with a high-quality abstract placeholder or color */}
         <div className="absolute inset-0 z-0 bg-navy">
              {/* Gradient Overlay for Depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" />
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/90 z-10 pointer-events-none" /> */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" /> */}
              {/* Hero Image */}
             {/* <Image
               src="/imgs/hero.png"
@@ -36,7 +38,8 @@ export default function Home() {
 
             {/* Mobile Hero image */}
             <Image
-              src="/imgs/hero-mobile.jpg"
+              // src="/imgs/hero-mobile.jpg"
+              src="/imgs/new-hero-mobile.jpg"
               alt="Background mobile"
               fill
               className="object-cover opacity-90 block md:hidden"
@@ -45,6 +48,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20">
+           {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/90 z-10 pointer-events-none" /> */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white mb-8 tracking-tight leading-tight">
               The Invisible Standard.
             </h1>
