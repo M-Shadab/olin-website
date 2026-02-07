@@ -47,7 +47,7 @@ export default function About() {
             <div className="md:w-1/2 w-full">
               <div className="relative w-full aspect-[3/4] bg-gray-200 border border-gray-300 flex items-center justify-center rounded-sm overflow-hidden shadow-2xl">
                 <Image
-                  src="/imgs/founder.png"
+                  src="/imgs/founder-1.png"
                   alt="Founder of OPAL"
                   fill
                   className="object-cover"
