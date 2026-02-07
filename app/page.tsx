@@ -59,7 +59,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button 
                 onClick={() => document.getElementById('partner-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 md:px-20 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1 cursor-pointer"
+                className="px-10 md:px-20 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1 cursor-pointer"
               >
                 Partner With Us
               </button>
