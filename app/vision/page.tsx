@@ -51,6 +51,7 @@ export default function About() {
                   alt="Founder of OPAL"
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
             </div>

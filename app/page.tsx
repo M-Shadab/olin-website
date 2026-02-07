@@ -18,7 +18,13 @@ export default function Home() {
              {/* Gradient Overlay for Depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" />
              {/* Hero Image */}
-            <div className="absolute inset-0 bg-[url('/imgs/hero.png')] bg-cover bg-center opacity-90" />
+            <Image
+              src="/imgs/hero.png"
+              alt="Background"
+              fill
+              className="object-cover opacity-90"
+              priority
+            />
         </div>
 
         <div className="relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20">
@@ -46,28 +52,29 @@ export default function Home() {
             </div>
 
             {/* Trust Anchor / Social Proof */}
-            <div className="mt-32 flex justify-center items-center gap-8 md:gap-16 opacity-60">
+            {/* <div className="mt-32 flex justify-center items-center gap-8 md:gap-16 opacity-60">
                 <span className="text-xs font-mono text-white uppercase tracking-widest">San Francisco</span>
                 <span className="w-1 h-1 bg-gold rounded-full"></span>
                 <span className="text-xs font-mono text-white uppercase tracking-widest">Napa Valley</span>
                 <span className="w-1 h-1 bg-gold rounded-full"></span>
                 <span className="text-xs font-mono text-white uppercase tracking-widest">Sonoma</span>
-            </div>
+            </div> */}
         </div>
       </section>
 
       {/* Service Visuals Row */}
       <section className="w-full px-6 -mt-20 relative z-30">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
+          <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
              {/* Item 1: Laundry & Linen */}
-             <div className="group cursor-pointer flex flex-col items-center">
+             <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
                  <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-1.png" 
                       alt="Premium Towels" 
                       fill 
                       className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                      priority
                     />
                     <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
                  </div>
@@ -76,7 +83,7 @@ export default function Home() {
              </div>
 
              {/* Item 2: Guest Room Support */}
-             <div className="group cursor-pointer flex flex-col items-center">
+             <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
                  <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-2.png" 
@@ -91,7 +98,7 @@ export default function Home() {
              </div>
 
              {/* Item 3: Housekeeping */}
-             <div className="group cursor-pointer flex flex-col items-center">
+             <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
                  <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-3.png" 
@@ -106,7 +113,7 @@ export default function Home() {
              </div>
 
              {/* Item 4: Facility Supply */}
-             <div className="group cursor-pointer flex flex-col items-center">
+             <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
                  <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-4.png" 
@@ -121,7 +128,7 @@ export default function Home() {
              </div>
 
              {/* Item 5: Sustainability */}
-             <div className="group cursor-pointer flex flex-col items-center">
+             <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
                  <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
                     <Image 
                       src="/imgs/sec-1-5.png" 
