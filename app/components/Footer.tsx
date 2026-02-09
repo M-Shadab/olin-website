@@ -98,7 +98,7 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-4 text-sm text-white/60 font-light">
-              <li className="flex items-start gap-3">
+              {/* <li className="flex items-start gap-3">
                 <span className="text-gold mt-1">
                   <svg
                     width="14"
@@ -112,7 +112,7 @@ export default function Footer() {
                   </svg>
                 </span>
                 +91-8447560065
-              </li>
+              </li> */}
               <li className="flex items-start gap-3">
                 <span className="text-gold mt-1">
                   <svg

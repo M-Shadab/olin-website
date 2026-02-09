@@ -5,8 +5,10 @@ import Footer from "./components/Footer";
 import Image from "next/image";
 
 export default function Home() {
+  const frameworkGridStyle = "flex md:grid md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10 snap-x snap-mandatory md:snap-none overflow-x-auto scrollbar-hide md:overflow-hidden";
 
-
+  const frameworkCardStyle = "p-12 border border-r-0 md:border-t-0 md:border-l-0 md:border-r border-black/10 hover:bg-white transition-all duration-500 group min-w-[65vw] md:min-w-[280px] snap-center";
+  
   return (
     <div className="min-h-screen font-sans text-foreground bg-background selection:bg-gold selection:text-white">
       <Header />
@@ -215,44 +217,52 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-medium text-navy mb-8 md:mb-16 text-center">The OPAL Framework</h2>
             
             {/* Mobile: Horizontal scroll, Desktop: Bordered grid */}
-            <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-3 md:gap-0 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10">
+            {/* <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10"> */}
+            {/* <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10"> */}
+            <div className={frameworkGridStyle}>
                 {/* Item 1 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent border md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">01</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Laundry & Linen</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">High-capacity washing, precision pressing, and spotless delivery specific to your inventory.</p>
                 </div>
                 
                  {/* Item 2 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">02</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Supply & Rotation</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Automated inventory management ensuring you never run short of daily essentials.</p>
                 </div>
                 
                  {/* Item 3 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group  flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">03</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Guest Room Support</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Beyond just sheets—duvets, robes, and specialized room textiles handled with care.</p>
                 </div>
 
                 {/* Item 4 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group  flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">04</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Amenity Curations</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Curated bathroom and room amenities from premium brands, packaged for your brand.</p>
                 </div>
                 
                  {/* Item 5 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:shadow-none flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">05</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Facility Supply</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Housekeeping carts, cleaning chemicals, and staff uniforms sourced and delivered.</p>
                 </div>
                 
                  {/* Item 6 */}
-                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                {/* <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group  flex-shrink-0 md:flex-shrink"> */}
+                <div className={frameworkCardStyle}>
                     <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">06</span>
                     <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Sustainable Green-Care</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Eco-friendly processing options significantly reducing water and energy usage.</p>
@@ -303,25 +313,25 @@ export default function Home() {
       </section>
 
       {/* The Closer: "Simplification" */}
-      <section id="partner-form" className="py-32 px-6 bg-white flex flex-col items-center justify-center">
-        <div className="w-full max-w-4xl bg-white p-12 md:p-24 shadow-2xl shadow-navy/5 border border-black/5">
-          <div className="text-center mb-16">
-             <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Initiate Partnership</span>
-             <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy">Partner with OPAL</h2>
+      <section id="partner-form" className="py-16 md:py-32 px-4 md:px-6 bg-white flex flex-col items-center justify-center">
+        <div className="w-full max-w-4xl bg-white p-6 md:p-12 lg:p-24 shadow-2xl shadow-navy/5 border border-black/5">
+          <div className="text-center mb-10 md:mb-16">
+             <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-3 md:mb-4 block">Initiate Partnership</span>
+             <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-medium text-navy">Partner with OPAL</h2>
           </div>
           {/* The Lead Generation Form */}
-          <form className="space-y-12">
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <form className="space-y-8 md:space-y-12">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <div className="relative group">
                   <input 
                     type="text" 
                     id="name" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-base md:text-lg"
                     placeholder="Name"
                   />
                   <label 
                     htmlFor="name" 
-                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-xs md:text-sm transition-all peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Full Name
                   </label>
@@ -331,12 +341,12 @@ export default function Home() {
                   <input 
                     type="email" 
                     id="email" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-base md:text-lg"
                     placeholder="Email"
                   />
                   <label 
                     htmlFor="email" 
-                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-xs md:text-sm transition-all peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Work Email
                   </label>
@@ -346,12 +356,12 @@ export default function Home() {
                   <input 
                     type="tel" 
                     id="phone" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-base md:text-lg"
                     placeholder="Phone"
                   />
                   <label 
                     htmlFor="phone" 
-                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-xs md:text-sm transition-all peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Direct Phone
                   </label>
@@ -361,23 +371,23 @@ export default function Home() {
                   <input 
                     type="text" 
                     id="website" 
-                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-base md:text-lg"
                     placeholder="Website"
                   />
                   <label 
                     htmlFor="website" 
-                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-xs md:text-sm transition-all peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Company Website/Hotel Name
                   </label>
                 </div>
              </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                  <div className="relative group">
                     <select 
                         id="rooms" 
-                        className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors text-lg appearance-none rounded-none"
+                        className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
                     >
                         <option value="" disabled selected>Select Capacity</option>
                         <option value="10-50">10 - 50 Rooms</option>
@@ -396,7 +406,7 @@ export default function Home() {
                  <div className="relative group">
                     <select 
                         id="service" 
-                        className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors text-lg appearance-none rounded-none"
+                        className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
                     >
                         <option value="" disabled selected>Primary Interest</option>
                         <option value="laundry">Laundry & Linen</option>
@@ -413,29 +423,56 @@ export default function Home() {
                  </div>
              </div>
              
-             <div className="relative group pt-4">
+             <div className="relative group pt-2 md:pt-4">
                   <textarea 
                     id="message" 
                     rows={1}
-                    className="peer w-full bg-transparent border-b border-gray-300 py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-lg resize-none min-h-[60px]"
+                    className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors placeholder-transparent text-base md:text-lg resize-none min-h-[60px]"
                     placeholder="Message"
                   ></textarea>
                   <label 
                     htmlFor="message" 
-                    className="absolute left-0 -top-3.5 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
+                    className="absolute left-0 -top-3.5 text-gray-400 text-xs md:text-sm transition-all peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 md:peer-placeholder-shown:top-4 peer-focus:-top-3.5 peer-focus:text-gold peer-focus:text-xs tracking-widest uppercase"
                   >
                     Specific Requirements or Questions
                   </label>
              </div>
+             <div className="relative group">
+                    <select 
+                        id="location" 
+                        className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
+                    >
+                        <option value="" disabled selected>Location</option>
+                        <option value="karol-bagh">Karol Bagh</option>
+                        <option value="paharganj">Paharganj</option>
+                        <option value="saket">Saket</option>
+                        <option value="south-delhi">South Delhi</option>
+                        <option value="aerocity">Aerocity</option>
+                        <option value="rk-ashram">RK Ashram</option>
+                        <option value="dwarka">Dwarka</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="mahipalpur">Mahipalpur</option>
+                        <option value="gurugram">Gurugram</option>
+                        <option value="noida">Noida</option>
+                        <option value="faridabad">Faridabad</option>
+                        <option value="ghaziabad">Ghaziabad</option>
+                    </select>
+                    <label 
+                        htmlFor="location" 
+                        className="absolute left-0 -top-3.5 text-gold text-xs tracking-widest uppercase"
+                    >
+                        Location
+                    </label>
+                 </div>
 
-             <div className="pt-8 text-center">
+             <div className="pt-6 md:pt-8 text-center">
                  <button 
                     type="button"
-                    className="px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm cursor-pointer"
+                    className="w-full md:w-auto px-10 md:px-12 py-4 md:py-5 bg-navy text-white text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold transition-colors duration-500 rounded-sm cursor-pointer"
                  >
                     Request Proposal
                  </button>
-                 <p className="mt-6 text-xs text-gray-400 font-light">
+                 <p className="mt-4 md:mt-6 text-xs text-gray-400 font-light">
                     Our team typically responds within 4 business hours.
                  </p>
              </div>
