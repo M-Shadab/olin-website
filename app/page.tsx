@@ -17,16 +17,6 @@ export default function Home() {
         <div className="absolute inset-0 z-0 bg-navy">
              {/* Gradient Overlay for Depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-navy/5 md:from-navy/30 md:via-transparent md:to-navy/80 to-navy/90 z-10 pointer-events-none" />
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/80 z-10 pointer-events-none" /> */}
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" /> */}
-             {/* Hero Image */}
-            {/* <Image
-              src="/imgs/hero.png"
-              alt="Background"
-              fill
-              className="object-cover opacity-90"
-              priority
-            /> */}
             {/* Desktop Hero image */}
             <Image
               src="/imgs/hero.png"
@@ -48,7 +38,6 @@ export default function Home() {
         </div>
 
         <div className="relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20">
-           {/* <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/90 z-10 pointer-events-none" /> */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white mb-8 tracking-tight leading-tight">
               The Invisible Standard <br/><span className="text-gray-100 md:text-white text-[2rem] md:text-[3rem] lg:text-[4rem]">in Hospitality Operations.</span>
             </h1>
@@ -181,7 +170,7 @@ export default function Home() {
       </section> */}
       
 
-      {/* The Pillars: "The Alba Standard" */}
+      {/* The Pillars: "The Opal Standard" */}
       <section className="py-24 md:py-32 px-6 bg-white border-b border-black/5">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
@@ -221,50 +210,51 @@ export default function Home() {
       </section>
 
       {/* The Grid: "The OPAL Framework" */}
-      <section className="py-24 px-6 bg-off-white bg-noise">
+      <section className="py-16 md:py-24 px-6 bg-off-white bg-noise">
         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy mb-16 text-center">The OPAL Framework</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-medium text-navy mb-8 md:mb-16 text-center">The OPAL Framework</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black/10">
+            {/* Mobile: Horizontal scroll, Desktop: Bordered grid */}
+            <div className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-3 md:gap-0 pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10">
                 {/* Item 1 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">01</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Laundry & Linen</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">01</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Laundry & Linen</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">High-capacity washing, precision pressing, and spotless delivery specific to your inventory.</p>
                 </div>
                 
                  {/* Item 2 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">02</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Supply & Rotation</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">02</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Supply & Rotation</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Automated inventory management ensuring you never run short of daily essentials.</p>
                 </div>
                 
                  {/* Item 3 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">03</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Guest Room Support</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">03</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Guest Room Support</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Beyond just sheets—duvets, robes, and specialized room textiles handled with care.</p>
                 </div>
 
                 {/* Item 4 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">04</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Amenity Curations</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">04</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Amenity Curations</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Curated bathroom and room amenities from premium brands, packaged for your brand.</p>
                 </div>
                 
                  {/* Item 5 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">05</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Facility Supply</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">05</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Facility Supply</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Housekeeping carts, cleaning chemicals, and staff uniforms sourced and delivered.</p>
                 </div>
                 
                  {/* Item 6 */}
-                <div className="p-12 border-r border-b border-black/10 hover:bg-white transition-all duration-500 group">
-                    <span className="block text-xs font-mono text-gray-300 mb-6 group-hover:text-gold transition-colors">06</span>
-                    <h3 className="text-2xl font-playfair font-medium text-navy mb-4">Sustainable Green-Care</h3>
+                <div className="w-[65vw] md:min-w-[280px] snap-center p-5 md:p-12 bg-white md:bg-transparent md:border-r md:border-b border-black/10 hover:bg-white transition-all duration-500 group rounded-sm md:rounded-none shadow-sm md:shadow-none flex-shrink-0 md:flex-shrink">
+                    <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors">06</span>
+                    <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4">Sustainable Green-Care</h3>
                     <p className="text-gray-500 text-sm leading-relaxed font-light">Eco-friendly processing options significantly reducing water and energy usage.</p>
                 </div>
             </div>
@@ -319,7 +309,7 @@ export default function Home() {
              <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Initiate Partnership</span>
              <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy">Partner with OPAL</h2>
           </div>
-          
+          {/* The Lead Generation Form */}
           <form className="space-y-12">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative group">
