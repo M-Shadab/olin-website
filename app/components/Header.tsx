@@ -17,13 +17,13 @@ export default function Header() {
   }, []);
 
   const scrollToPartnerForm = () => {
-     const partnerForm = document.getElementById('partner-form');
-     if (partnerForm) {
-        partnerForm.scrollIntoView({ behavior: 'smooth' });
-     } else {
-        window.location.href = "/#partner-form";
-     }
-     setIsMobileMenuOpen(false); // Close menu if open
+    const partnerForm = document.getElementById("partner-form");
+    if (partnerForm) {
+      partnerForm.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = "/#partner-form";
+    }
+    setIsMobileMenuOpen(false); // Close menu if open
   };
 
   const toggleMenu = () => {
@@ -32,13 +32,20 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 ${isMobileMenuOpen ? 'bg-navy border-none' : 'bg-white/95 backdrop-blur-sm border-b border-black/5'}`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 ${isMobileMenuOpen ? "bg-navy border-none" : "bg-white/95 backdrop-blur-sm border-b border-black/5"}`}
+      >
         <div className="flex items-baseline gap-1 relative z-50">
-          <Link href="/" className={`text-2xl font-playfair font-bold tracking-tight transition-colors ${isMobileMenuOpen ? 'text-white' : 'text-navy'}`}>
-              OPAL.
+          <Link
+            href="/"
+            className={`text-2xl font-playfair font-bold tracking-tight transition-colors ${isMobileMenuOpen ? "text-white" : "text-navy"}`}
+          >
+            OPAL.
           </Link>
-          <span className={`hidden md:inline-block text-xs font-mono uppercase tracking-widest pl-2 ${isMobileMenuOpen ? 'text-white/40' : 'text-gray-400'}`}>
-            Hospitality
+          <span
+            className={`hidden md:inline-block text-xs font-mono uppercase tracking-widest pl-2 ${isMobileMenuOpen ? "text-white/40" : "text-gray-400"}`}
+          >
+            Hospitality Solutions
           </span>
         </div>
 
@@ -77,18 +84,36 @@ export default function Header() {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <button 
+        <button
           onClick={toggleMenu}
           className="md:hidden relative z-50 text-navy hover:text-gold transition-colors focus:outline-none"
         >
           <span className="sr-only">Toggle Menu</span>
           {isMobileMenuOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           ) : (
-             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -97,27 +122,41 @@ export default function Header() {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-navy z-40 flex flex-col items-center justify-center transition-opacity duration-100 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-           <nav className="flex flex-col items-center gap-8 text-white/80">
-              <Link href="/" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
-                Home
-              </Link>
-              {/* <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
+        <div
+          className={`fixed inset-0 bg-navy z-40 flex flex-col items-center justify-center transition-opacity duration-100 ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        >
+          <nav className="flex flex-col items-center gap-8 text-white/80">
+            <Link
+              href="/"
+              onClick={toggleMenu}
+              className="text-2xl font-playfair hover:text-gold transition-colors"
+            >
+              Home
+            </Link>
+            {/* <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
                 Expertise
               </a> */}
-              <Link href="/founder" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
-                Founder
-              </Link>
-              <a href="#" onClick={toggleMenu} className="text-2xl font-playfair hover:text-gold transition-colors">
-                Member Login
-              </a>
-              <button
-                onClick={scrollToPartnerForm}
-                className="mt-8 px-10 py-4 text-sm font-bold tracking-[0.2em] uppercase text-navy bg-white hover:bg-gold hover:text-white transition-all duration-300 rounded-sm"
-              >
-                Inquire
-              </button>
-           </nav>
+            <Link
+              href="/founder"
+              onClick={toggleMenu}
+              className="text-2xl font-playfair hover:text-gold transition-colors"
+            >
+              Founder
+            </Link>
+            <a
+              href="#"
+              onClick={toggleMenu}
+              className="text-2xl font-playfair hover:text-gold transition-colors"
+            >
+              Member Login
+            </a>
+            <button
+              onClick={scrollToPartnerForm}
+              className="mt-8 px-10 py-4 text-sm font-bold tracking-[0.2em] uppercase text-navy bg-white hover:bg-gold hover:text-white transition-all duration-300 rounded-sm"
+            >
+              Inquire
+            </button>
+          </nav>
         </div>
       </header>
     </>
