@@ -40,12 +40,12 @@ export default function Header() {
             href="/"
             className={`text-2xl font-playfair font-bold tracking-tight transition-colors ${isMobileMenuOpen ? "text-white" : "text-navy"}`}
           >
-            OPAL.
+            OLIN.
           </Link>
           <span
             className={`hidden md:inline-block text-xs font-mono uppercase tracking-widest pl-2 ${isMobileMenuOpen ? "text-white/40" : "text-gray-400"}`}
           >
-            Hospitality Solutions
+            Hospitality Services
           </span>
         </div>
 

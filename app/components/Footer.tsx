@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
           {/* Col 1: Brand */}
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-playfair text-white mb-6">OPAL</h3>
+            <h3 className="text-2xl font-playfair text-white mb-6">OLIN</h3>
             <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
               The silent partner in hospitality excellence. enhancing guest
               experience through invisible perfection.
@@ -46,7 +46,10 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-white/60 font-light">
               <li>
-                <Link href="/about" className="hover:text-gold transition-colors">
+                <Link
+                  href="/about"
+                  className="hover:text-gold transition-colors"
+                >
                   About Us
                 </Link>
               </li>
@@ -127,7 +130,7 @@ export default function Footer() {
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
                 </span>
-                partners@opal-hospitality.in
+                partners@olinhospitality.com
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-gold mt-1">
@@ -151,7 +154,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/20 text-xs font-light tracking-wide">
-            &copy; {new Date().getFullYear()} OPAL Hospitality Services. All
+            &copy; {new Date().getFullYear()} OLIN Hospitality Services. All
             rights reserved.
           </p>
           <p className="text-white/20 text-xs font-light tracking-wide">

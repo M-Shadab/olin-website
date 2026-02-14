@@ -29,7 +29,7 @@ export default function About() {
                 Vision & Leadership
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                OPAL was founded with a singular mission: to bridge the gap
+                OLIN was founded with a singular mission: to bridge the gap
                 between industrial scale and boutique attention to detail. With
                 years of experience in the hospitality sector, we understand
                 that true luxury lies in the unseen perfection of daily
@@ -48,7 +48,7 @@ export default function About() {
               <div className="relative w-full aspect-[3/4] bg-gray-200 border border-gray-300 flex items-center justify-center rounded-sm overflow-hidden shadow-2xl">
                 <Image
                   src="/imgs/founder-best.jpg"
-                  alt="Founder of OPAL"
+                  alt="Founder of OLIN"
                   fill
                   className="object-cover"
                   priority
