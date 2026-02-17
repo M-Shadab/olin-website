@@ -191,7 +191,7 @@ export default function Header() {
             </a>
 
             <Link
-              href="/founder"
+              href="/vision"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`text-3xl font-playfair text-white/90 hover:text-gold transition-all duration-500 transform ${
                 isMobileMenuOpen
