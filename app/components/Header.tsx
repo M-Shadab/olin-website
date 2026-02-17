@@ -114,32 +114,47 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          onClick={toggleMenu}
-          className={`md:hidden relative z-[60] w-10 h-10 flex flex-col justify-center items-end gap-1.5 focus:outline-none group`}
-          aria-label="Toggle Menu"
-        >
-          <span
-            className={`h-0.5 bg-current transition-all duration-300 ease-out origin-right ${
-              isMobileMenuOpen
-                ? "w-6 -rotate-45 translate-y-[2px] bg-white"
-                : "w-6 bg-navy"
-            }`}
-          />
-          <span
-            className={`h-0.5 bg-current transition-all duration-300 ease-out ${
-              isMobileMenuOpen ? "opacity-0 w-0 bg-white" : "w-4 bg-navy"
-            }`}
-          />
-          <span
-            className={`h-0.5 bg-current transition-all duration-300 ease-out origin-right ${
-              isMobileMenuOpen
-                ? "w-6 rotate-45 -translate-y-[2px] bg-white"
-                : "w-6 bg-navy"
-            }`}
-          />
-        </button>
+        {/* Mobile Navigation (Lock + Burger) */}
+        <div className="md:hidden flex items-center gap-4 relative z-[60]">
+          <a
+            href="https://app.olinhospitality.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-navy hover:text-gold transition-colors p-2 -mr-2 group"
+            aria-label="Member Login"
+          >
+            <Lock className="w-4 h-4 text-navy/40 group-hover:text-gold transition-colors" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-navy group-hover:text-gold transition-colors pt-0.5">
+              Login
+            </span>
+          </a>
+
+          <button
+            onClick={toggleMenu}
+            className="w-10 h-10 flex flex-col justify-center items-end gap-1.5 focus:outline-none group"
+            aria-label="Toggle Menu"
+          >
+            <span
+              className={`h-0.5 bg-current transition-all duration-300 ease-out origin-right ${
+                isMobileMenuOpen
+                  ? "w-6 -rotate-45 translate-y-[2px] bg-white"
+                  : "w-6 bg-navy"
+              }`}
+            />
+            <span
+              className={`h-0.5 bg-current transition-all duration-300 ease-out ${
+                isMobileMenuOpen ? "opacity-0 w-0 bg-white" : "w-4 bg-navy"
+              }`}
+            />
+            <span
+              className={`h-0.5 bg-current transition-all duration-300 ease-out origin-right ${
+                isMobileMenuOpen
+                  ? "w-6 rotate-45 -translate-y-[2px] bg-white"
+                  : "w-6 bg-navy"
+              }`}
+            />
+          </button>
+        </div>
 
         {/* Mobile Menu Overlay - ISOLATED LAYER */}
         <div
