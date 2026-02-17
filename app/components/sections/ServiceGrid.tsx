@@ -69,7 +69,7 @@ export default function ServiceGrid() {
           <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
             <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
               <Image
-                src="/imgs/sec-1-4.png"
+                src="/imgs/sec-1-4.3.png"
                 alt="Amenities"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -88,7 +88,7 @@ export default function ServiceGrid() {
           <div className="group cursor-pointer flex flex-col items-center min-w-[240px] md:min-w-0 snap-center">
             <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
               <Image
-                src="/imgs/sec-1-5.png"
+                src="/imgs/sec-1-5.3.png"
                 alt="Sustainability"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"

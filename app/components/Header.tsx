@@ -86,14 +86,14 @@ export default function Header() {
             <a href="#" className="hover:text-navy transition-colors">
               Expertise
             </a>
-            <Link href="/founder" className="hover:text-navy transition-colors">
-              Vision
+            <Link href="/vision" className="hover:text-navy transition-colors">
+              Founder
             </Link>
           </nav>
 
           <div className="flex items-center gap-6 pl-6 border-l border-black/5">
             <a
-              href="https://app.olinhospitality.com"
+              href="https://app.olinhospitality.com/auth/login"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-xs font-bold text-navy/60 hover:text-navy transition-colors group"
@@ -117,7 +117,7 @@ export default function Header() {
         {/* Mobile Navigation (Lock + Burger) */}
         <div className="md:hidden flex items-center gap-4 relative z-[60]">
           <a
-            href="https://app.olinhospitality.com"
+            href="https://app.olinhospitality.com/auth/login"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-navy hover:text-gold transition-colors p-2 -mr-2 group"
@@ -202,11 +202,11 @@ export default function Header() {
               }`}
               style={{ transitionDelay: isMobileMenuOpen ? "200ms" : "0ms" }}
             >
-              Vision
+              Founder
             </Link>
 
             <a
-              href="https://app.olinhospitality.com"
+              href="https://app.olinhospitality.com/auth/login"
               target="_blank"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`flex items-center gap-3 text-3xl font-playfair text-white/90 hover:text-gold transition-all duration-500 transform ${

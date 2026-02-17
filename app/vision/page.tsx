@@ -1,12 +1,11 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import ParentLayout from "../components/parent-layout";
+import Framework from "../components/sections/Framework";
 import Image from "next/image";
 
-export default function About() {
+export default function Home() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background">
-      <Header />
-      <main className="pt-24">
+    <ParentLayout>
+      <div className="pt-18">
         {/* Simple Hero */}
         <section className="relative py-20 px-6 bg-navy text-white text-center">
           <h1 className="text-5xl md:text-6xl font-playfair mb-6">
@@ -57,8 +56,7 @@ export default function About() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </ParentLayout>
   );
 }

@@ -1,7 +1,4 @@
-"use client";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ParentLayout from "./components/parent-layout";
 import Hero from "./components/sections/Hero";
 import ServiceGrid from "./components/sections/ServiceGrid";
 import Pillars from "./components/sections/Pillars";
@@ -12,9 +9,7 @@ import PartnerForm from "./components/sections/PartnerForm";
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-sans text-foreground bg-background selection:bg-gold selection:text-white">
-      <Header />
-
+    <ParentLayout>
       <Hero />
       <ServiceGrid />
       <Pillars />
@@ -22,8 +17,6 @@ export default function Home() {
       <HumanElement />
       <Testimonial />
       <PartnerForm />
-
-      <Footer />
-    </div>
+    </ParentLayout>
   );
 }
