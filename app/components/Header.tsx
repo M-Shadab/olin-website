@@ -159,9 +159,7 @@ export default function Header() {
         {/* Mobile Menu Overlay - ISOLATED LAYER */}
         <div
           className={`fixed inset-0 z-50 bg-navy/95 backdrop-blur-md h-screen w-screen flex flex-col items-center justify-center transition-all duration-500 ${
-            isMobileMenuOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible delay-200"
+            isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
           {/* Menu Items Container - Stable Flex Layout */}
