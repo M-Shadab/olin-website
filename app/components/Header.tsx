@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Lock } from "lucide-react";
 
 export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
@@ -92,9 +93,12 @@ export default function Header() {
 
           <div className="flex items-center gap-6 pl-6 border-l border-black/5">
             <a
-              href="#"
-              className="text-xs font-medium text-navy/40 hover:text-navy transition-colors"
+              href="https://app.olinhospitality.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs font-bold text-navy/60 hover:text-navy transition-colors group"
             >
+              <Lock className="w-3 h-3 text-gold group-hover:text-navy transition-colors" />
               Member Login
             </a>
             <button
@@ -187,15 +191,17 @@ export default function Header() {
             </Link>
 
             <a
-              href="#"
+              href="https://app.olinhospitality.com"
+              target="_blank"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`text-3xl font-playfair text-white/90 hover:text-gold transition-all duration-500 transform ${
+              className={`flex items-center gap-3 text-3xl font-playfair text-white/90 hover:text-gold transition-all duration-500 transform ${
                 isMobileMenuOpen
                   ? "translate-y-0 opacity-100"
                   : "translate-y-4 opacity-0"
               }`}
               style={{ transitionDelay: isMobileMenuOpen ? "250ms" : "0ms" }}
             >
+              <Lock className="w-6 h-6 text-white/50" />
               Member Login
             </a>
 
