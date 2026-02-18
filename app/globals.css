@@ -129,3 +129,70 @@ body {
     transform: scale(1.0) translateY(-12px);
   }
 }
+
+/* ─── Pillars / OLIN Standard: Scroll Animations ────────────────────────────
+ *
+ * 1. Heading fade-lift  (.pillars-heading → .pillars-heading--visible)
+ * 2. Gold rule draw-in  (.pillars-rule) — width expands 0 → 80px on reveal
+ * 3. Pillar cards       (.pillar-card--ready → .pillar-card--visible)
+ *    Stagger via --pillar-delay CSS custom property set by JS
+ * 4. SVG stroke draw-on (.pillar-icon paths) — strokes animate in on card reveal
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Heading ── */
+.pillars-heading {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pillars-heading--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 2. Gold rule draw-in ── */
+.pillars-rule {
+  width: 0;
+  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+.pillars-heading--visible .pillars-rule {
+  width: 80px;
+}
+
+/* ── 3. Pillar cards ── */
+.pillar-card--ready {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  filter: blur(3px);
+  transition:
+    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms),
+    filter    0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+.pillar-card--ready.pillar-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
+
+/* ── 4. SVG stroke draw-on ── */
+/* Set a large dasharray so strokes start invisible */
+.pillar-icon path,
+.pillar-icon circle,
+.pillar-icon polyline {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0s; /* no transition until card is visible */
+}
+/* When card reveals, animate strokes in with a delay after the card itself */
+.pillar-card--visible .pillar-icon path,
+.pillar-card--visible .pillar-icon circle,
+.pillar-card--visible .pillar-icon polyline {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(var(--pillar-delay, 0ms) + 200ms);
+}
+
