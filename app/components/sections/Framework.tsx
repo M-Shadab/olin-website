@@ -96,10 +96,10 @@ export default function Framework() {
   }, []);
 
   const frameworkGridStyle =
-    "flex md:grid md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10 snap-x snap-mandatory md:snap-none overflow-x-auto scrollbar-hide md:overflow-hidden";
+    "flex md:grid md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10 snap-x snap-mandatory md:snap-none overflow-x-auto  md:overflow-hidden";
 
   const frameworkCardStyle =
-    "fw-card group relative p-12 border border-r-0 md:border-t-0 md:border-l-0 md:border-r border-black/10 hover:bg-white transition-colors duration-500 min-w-[85vw] md:min-w-[280px] snap-center";
+    "fw-card group relative p-12 border border-r-0 md:border-t-0 md:border-l-0 md:border-r border-black/10 hover:bg-white transition-colors duration-500 min-w-[75vw] md:min-w-[280px] snap-center";
 
   return (
     <section className="py-16 md:py-24 px-6 bg-off-white bg-noise">
