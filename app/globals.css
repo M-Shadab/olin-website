@@ -157,8 +157,9 @@ body {
   width: 0;
   transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
-.pillars-heading--visible .pillars-rule {
-  width: 80px;
+.pillars-heading--visible .pillars-rule,
+.fw-heading--visible .pillars-rule {
+  width: 80px !important;
 }
 
 /* ── 3. Pillar cards ── */
@@ -222,4 +223,45 @@ body {
   transform: translateY(0) !important;
   opacity: 1 !important;
 }
+
+/* ─── OLIN Framework: Grid Reveal Animations ─────────────────────────────────
+ *
+ * 1. Heading fade-lift  (.fw-heading → .fw-heading--visible)
+ * 2. Framework cards    (.fw-card--ready → .fw-card--visible)
+ *    Stagger via --fw-delay CSS custom property set by JS
+ *    Cards lift up + fade in + blur out (depth reveal).
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Heading ── */
+/* ── 1. Heading ── */
+.fw-heading {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  transition:
+    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fw-heading--visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── 2. Framework Cards ── */
+.fw-card--ready {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  filter: blur(2px) !important;
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms),
+    filter    0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.fw-card--ready.fw-card--visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0px) !important;
+}
+
 

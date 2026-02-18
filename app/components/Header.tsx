@@ -99,7 +99,7 @@ export default function Header() {
               className="flex items-center gap-2 text-xs font-bold text-navy/60 hover:text-navy transition-colors group"
             >
               <Lock className="w-3 h-3 text-gold group-hover:text-navy transition-colors" />
-              Member Login
+              Partner Login
             </a>
             <button
               onClick={scrollToPartnerForm}
@@ -121,7 +121,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-navy hover:text-gold transition-colors p-2 -mr-2 group"
-            aria-label="Member Login"
+            aria-label="Partner Login"
           >
             <Lock className="w-4 h-4 text-navy/40 group-hover:text-gold transition-colors" />
             <span className="text-[10px] font-bold uppercase tracking-widest text-navy group-hover:text-gold transition-colors pt-0.5">
@@ -215,7 +215,7 @@ export default function Header() {
               style={{ transitionDelay: isMobileMenuOpen ? "250ms" : "0ms" }}
             >
               <Lock className="w-6 h-6 text-white/50" />
-              Member Login
+              Partner Login
             </a>
 
             {/* Static CTA Button - No dynamic insertions */}
