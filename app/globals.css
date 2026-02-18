@@ -3,9 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --color-navy: #1A2B3C;
-  --color-gold: #D4AF37;
-  --color-off-white: #F9F9F9;
+  --color-navy: #1a2b3c;
+  --color-gold: #d4af37;
+  --color-off-white: #f9f9f9;
 }
 
 @theme inline {
@@ -44,7 +44,43 @@ body {
   pointer-events: none;
 }
 
-.bg-noise>* {
+.bg-noise > * {
   position: relative;
   z-index: 1;
+}
+
+/* ─── ServiceGrid: Mobile Scroll Reveal ──────────────────────────────────────
+ *
+ * Two-class system prevents SSR flash and desktop interference:
+ *
+ *   1. .sg-card            — base class, no hidden styles (visible on SSR/desktop)
+ *   2. .sg-card--ready     — added by JS *only* on mobile after mount;
+ *                            applies the hidden initial state
+ *   3. .sg-card--visible   — added by IntersectionObserver; triggers transition
+ *
+ * Pattern: Apple / LVMH / Aesop / Vogue
+ *   • Vertical lift Y-axis — organic, editorial
+ *   • blur(4px → 0)        — card "materialises" into focus
+ *   • scale(0.96 → 1)      — subtle, high-end print-to-screen feel
+ *   • Per-card stagger via --reveal-delay CSS custom property set by JS
+ *   • Expo Out easing (0.16, 1, 0.3, 1) — Apple's iOS curve
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* Hidden initial state — only applied when JS adds --ready on mobile */
+.sg-card--ready {
+  opacity: 0;
+  transform: translateY(32px) scale(0.96);
+  filter: blur(4px);
+  transition:
+    opacity   0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    filter    0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+/* Revealed state — Observer adds this class, triggering the transition */
+.sg-card--ready.sg-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
 }
