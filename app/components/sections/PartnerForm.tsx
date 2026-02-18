@@ -83,9 +83,10 @@ export default function PartnerForm() {
             <div className="relative group">
               <select
                 id="rooms"
+                defaultValue={""}
                 className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select Capacity
                 </option>
                 <option value="10-50">10 - 50 Rooms</option>
@@ -104,9 +105,10 @@ export default function PartnerForm() {
             <div className="relative group">
               <select
                 id="service"
+                defaultValue={""}
                 className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Primary Interest
                 </option>
                 <option value="laundry">Laundry & Linen</option>
@@ -139,10 +141,11 @@ export default function PartnerForm() {
           </div>
           <div className="relative group">
             <select
+              defaultValue={""}
               id="location"
               className="peer w-full bg-transparent border-b border-gray-300 py-3 md:py-4 text-navy focus:outline-none focus:border-gold transition-colors text-base md:text-lg appearance-none rounded-none"
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Location
               </option>
               <option value="karol-bagh">Karol Bagh</option>

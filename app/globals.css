@@ -195,4 +195,31 @@ body {
   transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1)
     calc(var(--pillar-delay, 0ms) + 200ms);
 }
+/* ─── Hero Text Animations ──────────────────────────────────────────────────
+ *
+ * Staggered reveal for Hero text sections:
+ * 1. .hero-line        — Overflow hidden container for text
+ * 2. .hero-line > *    — Initial state: translated down 100%
+ * 3. .hero-text--visible — Trigger class added by JS on mount
+ *
+ * Pattern: "Curtain lift" reveal used by high-end editorial sites.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+.hero-line {
+  overflow: hidden; /* masks the text as it slides up */
+}
+
+.hero-line > * {
+  transform: translateY(100%) !important;
+  opacity: 0 !important;
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) var(--hero-delay, 0ms),
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--hero-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.hero-text--visible .hero-line > * {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
 
