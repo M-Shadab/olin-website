@@ -25,8 +25,15 @@ export default function HumanElement() {
 
   return (
     <section className="flex flex-col md:flex-row h-auto md:h-[600px] w-full">
+      <div className="hidden md:block w-full md:w-1/2 relative min-h-[400px]">
+        <div className="absolute inset-0 bg-navy">
+          {/* Placeholder for "Candid, high-end photo of Alba staff inspecting quality" */}
+          <div className="absolute inset-0 bg-[url('/imgs/hygiene-img.2.jpg')] bg-cover bg-center" />
+        </div>
+      </div>
+
       {/* Visual Left */}
-      <div className="w-full md:w-1/2 relative min-h-[400px] overflow-hidden">
+      <div className="md:hidden w-full md:w-1/2 relative min-h-[400px] overflow-hidden">
         {/* Dark base so there's no flash before image loads */}
         <div className="absolute inset-0 bg-navy" />
 
@@ -35,7 +42,7 @@ export default function HumanElement() {
           he-img:      slow Ken Burns zoom + subtle pan
         */}
         <div ref={sectionRef} className="he-img-wrap absolute inset-0">
-          <div className="he-img absolute inset-0 bg-[url('/imgs/hygiene-img.1.jpg')] bg-cover bg-center scale-110" />
+          <div className="he-img absolute inset-0 bg-[url('/imgs/hygiene-img.2.jpg')] bg-cover bg-center scale-110" />
         </div>
 
         {/* Subtle dark vignette for depth */}
