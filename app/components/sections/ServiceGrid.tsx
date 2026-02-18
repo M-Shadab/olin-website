@@ -7,6 +7,7 @@ const services = [
   {
     // src: "/imgs/sec-1-1.1.jpg",
     src: "/imgs/sec-1-1.2.jpg",
+    srcMobile: "/imgs/sec-1-1.2-mobile.jpg",
     alt: "Premium Towels",
     title: "Laundry & Linen",
     subtitle: "Spotless Daily Service",
@@ -20,6 +21,7 @@ const services = [
   },
   {
     src: "/imgs/sec-1-3.png",
+    srcMobile: "/imgs/sec-1-3-mobile.png",
     alt: "Housekeeping",
     title: "Housekeeping",
     subtitle: "Staff Augmentation",
