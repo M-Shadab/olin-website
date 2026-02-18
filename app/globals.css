@@ -84,3 +84,48 @@ body {
   transform: translateY(0) scale(1);
   filter: blur(0px);
 }
+
+/* ─── HumanElement: Viewport Reveal ─────────────────────────────────────────
+ *
+ * Two-layer animation triggered by .he-revealed (added by IntersectionObserver):
+ *
+ *   1. Clip-path wipe (he-img-wrap)
+ *      inset(0 100% 0 0) → inset(0 0% 0 0)
+ *      The image is hidden behind a right-side clip, then wiped open left→right.
+ *      Used by: Four Seasons, Aman, Rosewood hotel sites.
+ *
+ *   2. Ken Burns (he-img)
+ *      Slow scale(1.1 → 1.0) + subtle upward pan over 8s.
+ *      Starts immediately on reveal, loops once.
+ *      Creates the "living photograph" feel of luxury editorial.
+ *
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* Initial state: fully clipped (invisible) */
+.he-img-wrap {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Revealed: wipe open */
+.he-revealed {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* Ken Burns: slow zoom-out + pan — starts when .he-revealed is added */
+.he-img {
+  transform-origin: center center;
+}
+
+.he-revealed .he-img {
+  animation: kenBurns 8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1.1) translateY(0px);
+  }
+  to {
+    transform: scale(1.0) translateY(-12px);
+  }
+}
