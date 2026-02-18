@@ -7,7 +7,7 @@ export default function HumanElement() {
       <div className="w-full md:w-1/2 relative min-h-[400px]">
         <div className="absolute inset-0 bg-navy">
           {/* Placeholder for "Candid, high-end photo of Alba staff inspecting quality" */}
-          <div className="absolute inset-0 bg-[url('/imgs/hygiene-img.png')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('/imgs/hygiene-img.1.jpg')] bg-cover bg-center" />
         </div>
       </div>
 
