@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Lock } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
@@ -53,39 +54,52 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 py-5 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 py-4 transition-all duration-300 ${
           isMobileMenuOpen
             ? "bg-transparent"
             : "bg-white/95 backdrop-blur-sm border-b border-black/5"
         }`}
       >
-        <div className="flex items-baseline gap-1 relative z-[60]">
-          <Link
-            href="/"
-            className={`text-2xl font-playfair font-bold tracking-tight transition-colors duration-500 ${
-              isMobileMenuOpen ? "text-white" : "text-navy"
-            }`}
-          >
-            OLIN.
-          </Link>
-          <span
-            className={`hidden md:inline-block text-xs font-mono uppercase tracking-widest pl-2 ${
-              isMobileMenuOpen ? "text-white/40" : "text-gray-400"
-            }`}
-          >
-            Hospitality Services
-          </span>
-        </div>
+        <Link href="/" className="flex items-center gap-3 relative z-[60]">
+          <Image
+            src={
+              isMobileMenuOpen
+                ? "/svgs/olin-logo-white.svg"
+                : "/svgs/olin-logo-black.svg"
+            }
+            alt="OLIN"
+            width={32}
+            height={32}
+            priority
+            className="w-auto min-w-[32px] min-h-[32px] h-8 object-contain transition-all duration-300"
+          />
+          <div>
+            <span
+              className={`text-lg md:text-[22px] font-playfair font-bold tracking-widest transition-colors duration-500 ${
+                isMobileMenuOpen ? "text-white" : "text-navy"
+              }`}
+            >
+              OLIN
+            </span>
+            <span
+              className={`hidden md:block text-[10px] font-inter font-medium uppercase tracking-[0.2em] transition-colors duration-500 opacity-80 ${
+                isMobileMenuOpen ? "text-white/60" : "text-black/60"
+              }`}
+            >
+              Hospitality Services
+            </span>
+          </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex gap-8 text-xs font-bold tracking-[0.15em] uppercase text-navy/60">
-            <Link href="/" className="hover:text-navy transition-colors">
+            {/* <Link href="/" className="hover:text-navy transition-colors">
               Home
-            </Link>
-            <a href="#" className="hover:text-navy transition-colors">
-              Expertise
-            </a>
+            </Link> */}
+            {/* <a href="#" className="hover:text-navy transition-colors">
+              Services
+            </a> */}
             <Link href="/vision" className="hover:text-navy transition-colors">
               Founder
             </Link>
@@ -177,7 +191,7 @@ export default function Header() {
               Home
             </Link>
 
-            <a
+            {/* <a
               href="#"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`text-3xl font-playfair text-white/90 hover:text-gold transition-all duration-500 transform ${
@@ -188,7 +202,7 @@ export default function Header() {
               style={{ transitionDelay: isMobileMenuOpen ? "150ms" : "0ms" }}
             >
               Expertise
-            </a>
+            </a> */}
 
             <Link
               href="/vision"

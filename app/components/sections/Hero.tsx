@@ -74,8 +74,8 @@ export default function Hero() {
           style={{ "--hero-delay": "280ms" } as React.CSSProperties}
         >
           <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-16 tracking-wide opacity-90">
-            Orchestrating hospitality excellence for the world&apos;s most
-            demanding properties.
+            Run hospitality on one standard—workflows, service SLAs, inventory &
+            consumables, and room-readiness systems, powered by OLIN.
           </p>
         </div>
 
