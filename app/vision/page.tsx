@@ -1,6 +1,7 @@
 "use client";
 
 import ParentLayout from "../components/parent-layout";
+import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import {
@@ -251,10 +252,8 @@ export default function Home() {
               scaling across properties.
             </p>
             <div className="reveal-up reveal-delay-300 opacity-0">
-              <a
-                href="https://app.olinhospitality.com/auth/register"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#partner-form"
                 className="group relative inline-flex items-center gap-4 bg-navy text-white px-10 py-5 text-sm font-bold tracking-[0.25em] uppercase overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gold translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
@@ -262,7 +261,7 @@ export default function Home() {
                   Start 1 Month Pilot
                 </span>
                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-navy transition-colors duration-300" />
-              </a>
+              </Link>
             </div>
           </div>
         </section>
