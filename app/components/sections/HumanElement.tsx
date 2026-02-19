@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function HumanElement() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -20,51 +22,85 @@ export default function HumanElement() {
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Line observer
+    const lineObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    );
+
+    if (lineRef.current) lineObserver.observe(lineRef.current);
+
+    return () => {
+      observer.disconnect();
+      lineObserver.disconnect();
+    };
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row h-auto md:h-[600px] w-full">
+    <section className="flex flex-col md:flex-row h-auto md:h-[700px] w-full relative">
+      {/* Schematic Line - Center Spine (visible on desktop) */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px -ml-[0.5px] z-20 hidden md:block pointer-events-none">
+        <div
+          ref={lineRef}
+          className="draw-vertical-line h-0 w-full bg-gold/30 mx-auto"
+        ></div>
+      </div>
+
       <div className="hidden md:block w-full md:w-1/2 relative min-h-[400px]">
         <div className="absolute inset-0 bg-navy">
-          {/* Placeholder for "Candid, high-end photo of Alba staff inspecting quality" */}
-          <div className="absolute inset-0 bg-[url('/imgs/hygiene-img.2.jpg')] bg-cover bg-center" />
+          <Image
+            src="/imgs/hygiene-img.2.jpg"
+            alt="Hygiene Standards"
+            fill
+            className="object-cover object-center opacity-80"
+          />
+          <div className="absolute inset-0 bg-navy/20 mix-blend-multiply"></div>
         </div>
       </div>
 
-      {/* Visual Left */}
+      {/* Visual Left (Mobile) */}
       <div className="md:hidden w-full md:w-1/2 relative min-h-[400px] overflow-hidden">
-        {/* Dark base so there's no flash before image loads */}
         <div className="absolute inset-0 bg-navy" />
-
-        {/*
-          he-img-wrap: clips from left → right on reveal (clip-path wipe)
-          he-img:      slow Ken Burns zoom + subtle pan
-        */}
         <div ref={sectionRef} className="he-img-wrap absolute inset-0">
-          <div className="he-img absolute inset-0 bg-[url('/imgs/hygiene-img.2.jpg')] bg-cover bg-center scale-110" />
+          <div className="he-img absolute inset-0">
+            <Image
+              src="/imgs/hygiene-img.2.jpg"
+              alt="Hygiene Standards"
+              fill
+              className="object-cover object-center scale-110"
+            />
+          </div>
         </div>
-
-        {/* Subtle dark vignette for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/40 to-transparent pointer-events-none" />
       </div>
 
       {/* Copy Right */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-white p-12 md:p-24">
-        <div className="max-w-md">
-          <h3 className="text-3xl md:text-4xl font-playfair font-medium text-navy mb-8">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-white bg-noise p-12 md:p-24 relative">
+        <div className="max-w-md relative z-10">
+          <span className="block text-gold text-xs font-bold tracking-[0.2em] uppercase mb-6">
+            The Human Element
+          </span>
+          <h3 className="text-3xl md:text-5xl font-playfair font-medium text-navy mb-8 leading-tight">
             Your Silent Partner in Excellence.
           </h3>
-          <p className="text-lg text-gray-600 leading-relaxed mb-10 font-light">
+          <p className="text-lg text-gray-600 leading-relaxed mb-12 font-light">
             &ldquo;We bridge the gap between industrial scale and boutique
             attention. Your reputation begins with the first thing a guest
             touches.&rdquo;
           </p>
           <a
             href="#"
-            className="text-gold font-medium tracking-wide hover:underline decoration-gold underline-offset-4 transition-all"
+            className="group inline-flex items-center gap-2 text-navy font-bold text-sm tracking-[0.15em] uppercase hover:text-gold transition-colors duration-300"
           >
-            Our Hygiene Standards &rarr;
+            <span>Our Hygiene Standards</span>
+            <span className="group-hover:translate-x-1 transition-transform duration-300">
+              &rarr;
+            </span>
           </a>
         </div>
       </div>
