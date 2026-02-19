@@ -287,3 +287,15 @@ body {
 .reveal-delay-500 { transition-delay: 500ms; }
 
 
+
+/* ─── Schematic Line Animation ────────────────────────────────────────────── */
+
+.draw-vertical-line {
+  height: 0;
+  transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: height;
+}
+
+.draw-vertical-line.in-view {
+  height: 100%;
+}
