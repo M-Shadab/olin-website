@@ -17,16 +17,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[720px] md:h-screen md:min-h-[800px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[720px] md:h-screen md:min-h-[800px] flex items-center justify-center overflow-hidden bg-navy">
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-navy">
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/5 md:from-navy/30 md:via-transparent md:to-navy/80 to-navy/90 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/10 md:from-navy/30 md:via-transparent md:to-navy/90 to-navy z-10 pointer-events-none" />
+
+        {/* Texture Overlay (simulated via CSS if desired, or kept clean for dark mode) */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
         {/* Desktop Hero image */}
         <Image
           src="/imgs/hero.png"
           alt="Background"
           fill
-          className="object-cover opacity-90 hidden md:block"
+          className="object-cover opacity-80 hidden md:block"
           priority
         />
         {/* Mobile Hero image */}
@@ -34,7 +38,7 @@ export default function Hero() {
           src="/imgs/new-hero-mobile.jpg"
           alt="Background mobile"
           fill
-          className="object-cover opacity-90 block md:hidden"
+          className="object-cover opacity-80 block md:hidden"
           priority
         />
       </div>
@@ -46,14 +50,23 @@ export default function Hero() {
       */}
       <div
         ref={containerRef}
-        className="hero-text relative z-20 w-full max-w-5xl px-6 md:px-12 text-center pt-20"
+        className="hero-text relative z-20 w-full max-w-6xl px-6 md:px-12 text-center pt-24"
       >
         {/* Line 1: Headline */}
         <div
           className="hero-line"
           style={{ "--hero-delay": "0ms" } as React.CSSProperties}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white tracking-tight leading-tight">
+          <span className="inline-block text-gold text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-8">
+            The New Standard
+          </span>
+        </div>
+
+        <div
+          className="hero-line"
+          style={{ "--hero-delay": "100ms" } as React.CSSProperties}
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-9xl font-playfair font-medium text-white tracking-tight leading-[1.1] mb-4">
             The Invisible Standard
           </h1>
         </div>
@@ -61,9 +74,9 @@ export default function Hero() {
         {/* Line 2: Headline sub-line */}
         <div
           className="hero-line"
-          style={{ "--hero-delay": "140ms" } as React.CSSProperties}
+          style={{ "--hero-delay": "250ms" } as React.CSSProperties}
         >
-          <h1 className="text-[2rem] md:text-[3rem] lg:text-[4rem] font-playfair font-medium text-gray-100 md:text-white tracking-tight leading-tight mb-8">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-playfair font-light text-gray-200 tracking-wide leading-tight mb-12">
             in Hospitality Operations.
           </h1>
         </div>
@@ -71,12 +84,12 @@ export default function Hero() {
         {/* Line 3: Subtext */}
         <div
           className="hero-line"
-          style={{ "--hero-delay": "280ms" } as React.CSSProperties}
+          style={{ "--hero-delay": "400ms" } as React.CSSProperties}
         >
-          <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-16 tracking-wide opacity-90">
+          <p className="text-lg md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto mb-16 opacity-90">
             Run hospitality on one standard—workflows, service SLAs, inventory &
             consumables, and room-readiness systems,&nbsp;
-            <span className="font-semibold text-gray-150">
+            <span className="text-white font-normal border-b border-gold/50 pb-0.5">
               powered by&nbsp;OLIN.
             </span>
           </p>
@@ -85,7 +98,7 @@ export default function Hero() {
         {/* Line 4: CTA */}
         <div
           className="hero-line"
-          style={{ "--hero-delay": "420ms" } as React.CSSProperties}
+          style={{ "--hero-delay": "550ms" } as React.CSSProperties}
         >
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
@@ -94,9 +107,11 @@ export default function Hero() {
                   .getElementById("partner-form")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-14 md:px-20 py-5 text-white bg-gold hover:bg-[#C5A028] transition-all duration-500 text-sm font-bold tracking-[0.2em] uppercase shadow-2xl hover:shadow-gold/20 rounded-sm cursor-pointer transform hover:-translate-y-1"
+              className="group relative px-12 py-5 text-navy bg-white hover:bg-gold transition-colors duration-500 text-sm font-bold tracking-[0.25em] uppercase overflow-hidden"
             >
-              Partner With Us
+              <span className="relative z-10 transition-colors duration-300">
+                Partner With Us
+              </span>
             </button>
           </div>
         </div>

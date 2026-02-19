@@ -1,159 +1,108 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Workflow, Clock, Scaling } from "lucide-react";
 
 const pillars = [
   {
     title: "Consistent Quality",
     description:
       "Every linen, every day. Industrial consistency with boutique care.",
-    icon: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="pillar-icon"
-      >
-        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-        <circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
+    icon: Workflow,
   },
   {
     title: "Reliable Timing",
     description:
       "GPS-tracked logistics. We arrive before you need us, every time.",
-    icon: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="pillar-icon"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
+    icon: Clock,
   },
   {
     title: "Adaptive Solutions",
     description:
       "From 10 rooms to 500. We scale our operations to match your growth.",
-    icon: (
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="pillar-icon"
-      >
-        <path d="M3 3v18h18" />
-        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
-      </svg>
-    ),
+    icon: Scaling,
   },
 ];
 
 export default function Pillars() {
   const headingRef = useRef<HTMLDivElement>(null);
   const pillarRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // ── Heading reveal ──────────────────────────────────────────────────────
-    const headingEl = headingRef.current;
-    if (headingEl) {
-      const headingObserver = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            headingEl.classList.add("pillars-heading--visible");
-            headingObserver.unobserve(headingEl);
-          }
-        },
-        { threshold: 0.3 },
-      );
-      headingObserver.observe(headingEl);
-    }
-
-    // ── Pillar cards staggered reveal ───────────────────────────────────────
-    const cardObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          const idx = Number(el.dataset.pillarIndex ?? 0);
-          el.style.setProperty("--pillar-delay", `${idx * 150}ms`);
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              el.classList.add("pillar-card--visible");
-            });
-          });
-          cardObserver.unobserve(el);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            if (entry.target.classList.contains("pillar-card")) {
+              entry.target.classList.add("pillar-card--visible");
+            }
+            if (entry.target.classList.contains("pillars-heading")) {
+              entry.target.classList.add("pillars-heading--visible");
+            }
+          }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
     );
 
+    if (headingRef.current) observer.observe(headingRef.current);
+    if (lineRef.current) observer.observe(lineRef.current);
     pillarRefs.current.forEach((el) => {
       if (el) {
         el.classList.add("pillar-card--ready");
-        cardObserver.observe(el);
+        observer.observe(el);
       }
     });
 
-    return () => {
-      cardObserver.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-white border-b border-black/5">
-      <div className="max-w-7xl mx-auto">
-        {/* Heading — animates as one unit */}
-        <div ref={headingRef} className="pillars-heading mb-20 text-center">
+    <section className="relative py-32 px-6 bg-white bg-noise border-b border-gray-100 overflow-hidden">
+      {/* Schematic Line - Center Spine */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px -ml-[0.5px] z-0 hidden md:block">
+        <div
+          ref={lineRef}
+          className="draw-vertical-line h-0 w-full bg-gold/20 mx-auto"
+        ></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Heading */}
+        <div ref={headingRef} className="pillars-heading mb-24 text-center">
           <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
             Why We Excel
           </span>
-          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-navy">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-medium text-navy">
             The OLIN Standard
           </h2>
-          {/* Animated gold rule that draws in under the heading */}
-          <div className="pillars-rule mx-auto mt-6 h-px bg-gold" />
+          <div className="pillars-rule mx-auto mt-8 h-px bg-gold" />
         </div>
 
         {/* Pillar cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
           {pillars.map((pillar, index) => (
             <div
               key={pillar.title}
               ref={(el) => {
                 pillarRefs.current[index] = el;
               }}
-              data-pillar-index={index}
-              className="pillar-card group px-6 md:px-12 py-8 md:py-4 text-center"
+              style={
+                { "--pillar-delay": `${index * 150}ms` } as React.CSSProperties
+              }
+              className="pillar-card group text-center bg-white p-8 md:p-12 relative"
             >
-              {/* Icon — strokes draw on when card becomes visible */}
-              <div className="mb-6 text-gold flex justify-center group-hover:-translate-y-1 transition-transform duration-500">
-                {pillar.icon}
+              {/* Icon Container */}
+              <div className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-50 group-hover:bg-navy/5 transition-colors duration-500">
+                <pillar.icon className="w-8 h-8 text-navy stroke-[1.5] group-hover:scale-110 transition-transform duration-500" />
               </div>
 
-              <h3 className="text-2xl font-playfair font-medium text-navy mb-4">
+              <h3 className="text-2xl md:text-3xl font-playfair font-medium text-navy mb-6">
                 {pillar.title}
               </h3>
-              <p className="text-gray-500 leading-relaxed font-light">
+              <p className="text-gray-500 leading-loose font-light text-lg">
                 {pillar.description}
               </p>
             </div>

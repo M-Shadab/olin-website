@@ -95,25 +95,21 @@ export default function Framework() {
     };
   }, []);
 
-  const frameworkGridStyle =
-    "flex md:grid md:grid-cols-2 lg:grid-cols-3 md:border-t md:border-l md:border-black/10 snap-x snap-mandatory md:snap-none overflow-x-auto  md:overflow-hidden";
-
-  const frameworkCardStyle =
-    "fw-card group relative p-12 border border-r-0 md:border-t-0 md:border-l-0 md:border-r border-black/10 hover:bg-white transition-colors duration-500 min-w-[75vw] md:min-w-[280px] snap-center";
-
   return (
-    <section className="py-16 md:py-24 px-6 bg-off-white bg-noise">
+    <section className="py-24 md:py-32 px-6 bg-off-white bg-noise relative">
       <div className="max-w-7xl mx-auto">
-        <div ref={headingRef} className="fw-heading mb-8 md:mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-medium text-navy">
+        <div ref={headingRef} className="fw-heading mb-16 md:mb-24 text-center">
+          <span className="text-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">
+            The System
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-medium text-navy">
             The OLIN Framework
           </h2>
-          {/* Animated gold rule that draws in under the heading */}
-          <div className="pillars-rule mx-auto mt-6 h-px bg-[#D4AF37]" />
+          <div className="pillars-rule mx-auto mt-8 h-px bg-gold" />
         </div>
 
-        {/* Mobile: Horizontal scroll, Desktop: Bordered grid */}
-        <div className={frameworkGridStyle}>
+        {/* Mobile: Horizontal scroll, Desktop: Clean Grid */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide">
           {items.map((item, index) => (
             <div
               key={item.number}
@@ -121,15 +117,17 @@ export default function Framework() {
                 cardRefs.current[index] = el;
               }}
               data-fw-index={index}
-              className={frameworkCardStyle}
+              className="fw-card group relative p-10 bg-white border border-gray-100 hover:border-gold/30 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-500 min-w-[85vw] md:min-w-0"
             >
-              <span className="block text-xs font-mono text-gray-300 mb-4 md:mb-6 group-hover:text-gold transition-colors duration-300">
+              <div className="absolute top-0 left-0 w-0 h-1 bg-gold transition-all duration-700 group-hover:w-full"></div>
+
+              <span className="block text-4xl font-playfair text-gray-200 mb-6 group-hover:text-gold/50 transition-colors duration-300">
                 {item.number}
               </span>
-              <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-3 md:mb-4 group-hover:translate-x-1 transition-transform duration-300">
+              <h3 className="text-xl md:text-2xl font-playfair font-medium text-navy mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed font-light group-hover:text-gray-600 transition-colors duration-300">
+              <p className="text-gray-500 text-sm leading-relaxed font-light">
                 {item.description}
               </p>
             </div>

@@ -91,9 +91,9 @@ export default function ServiceGrid() {
   }, []);
 
   return (
-    <section className="w-full px-6 -mt-20 relative z-30">
+    <section className="w-full px-6 -mt-20 relative z-30 mb-24">
       <div className="max-w-7xl mx-auto">
-        <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide flex-col md:flex-row">
+        <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide flex-col md:flex-row">
           {services.map((service, index) => (
             <div
               key={service.title}
@@ -103,13 +103,13 @@ export default function ServiceGrid() {
               data-card-index={index}
               className="sg-card group cursor-pointer flex flex-col items-center w-full md:min-w-0 snap-center mb-6 md:mb-0"
             >
-              <div className="relative w-full aspect-[16/9] md:aspect-[3/4] overflow-hidden mb-4 md:mb-6 bg-gray-100 shadow-sm transition-shadow duration-500 group-hover:shadow-md">
+              <div className="relative w-full aspect-[16/9] md:aspect-[3/4] overflow-hidden mb-6 bg-gray-100 shadow-sm transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-navy/10 border border-transparent group-hover:border-gold/30">
                 {/* Mobile image — shown only below md breakpoint */}
                 <Image
                   src={service.srcMobile ?? service.src}
                   alt={service.alt}
                   fill
-                  className="object-cover object-bottom transition-transform duration-1000 group-hover:scale-105 block md:hidden"
+                  className="object-cover object-bottom transition-transform duration-[1.5s] ease-out group-hover:scale-105 block md:hidden"
                   priority={index === 0}
                 />
                 {/* Desktop image — shown only at md and above */}
@@ -117,15 +117,15 @@ export default function ServiceGrid() {
                   src={service.src}
                   alt={service.alt}
                   fill
-                  className="object-cover object-center transition-transform duration-1000 group-hover:scale-105 hidden md:block"
+                  className="object-cover object-center transition-transform duration-[1.5s] ease-out group-hover:scale-105 hidden md:block"
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/10 transition-colors duration-700" />
               </div>
-              <h3 className="font-playfair text-xl dark:text-gray-300 dark:md:text-navy text-navy mb-2 group-hover:text-gold transition-colors duration-300 text-center">
+              <h3 className="font-playfair text-xl text-navy mb-2 group-hover:text-gold transition-colors duration-500 text-center">
                 {service.title}
               </h3>
-              <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium text-center">
+              <span className="text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium text-center group-hover:text-navy transition-colors duration-500">
                 {service.subtitle}
               </span>
             </div>
