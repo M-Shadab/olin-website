@@ -116,6 +116,22 @@ export default function Home() {
                     operations, controlled costs, and operational peace of
                     mind."
                   </blockquote>
+                  <div className="mt-8 ml-6 flex flex-col items-end">
+                    {/* <p className="text-3xl md:text-4xl text-gold font-playfair italic opacity-90">
+                      Mohd Shadab
+                    </p> */}
+                    <Image
+                      src="/svgs/founder-sign-gold.svg"
+                      alt="Sign of Founder of OLIN"
+                      width={160}
+                      height={160}
+                      className="opacity-95"
+                      priority
+                    />
+                    <p className="text-sm text-gray-400 uppercase tracking-widest mt-2">
+                      Founder, OLIN Hospitality
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
