@@ -259,7 +259,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gold translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                 <span className="relative z-10 group-hover:text-navy transition-colors duration-300">
-                  Start 7-Day Pilot
+                  Start 1 Month Pilot
                 </span>
                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-navy transition-colors duration-300" />
               </a>

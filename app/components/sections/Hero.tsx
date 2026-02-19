@@ -17,7 +17,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[720px] md:h-screen md:min-h-[800px] flex items-center justify-center overflow-hidden bg-navy">
+    <section className="relative w-full h-[720px] md:h-screen md:min-h-[700px] flex items-center justify-center overflow-hidden bg-navy">
       {/* Background */}
       <div className="absolute inset-0 z-0 bg-navy">
         <div className="absolute inset-0 bg-gradient-to-b from-navy/10 md:from-navy/30 md:via-transparent md:to-navy/90 to-navy z-10 pointer-events-none" />
@@ -50,45 +50,26 @@ export default function Hero() {
       */}
       <div
         ref={containerRef}
-        className="hero-text relative z-20 w-full max-w-6xl px-6 md:px-12 text-center pt-24"
+        className="hero-text relative z-20 w-full max-w-6xl px-6 md:px-12 text-center pt-32"
       >
         {/* Line 1: Headline */}
         <div
           className="hero-line"
           style={{ "--hero-delay": "0ms" } as React.CSSProperties}
         >
-          <span className="inline-block text-gold text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-8">
-            The New Standard
-          </span>
-        </div>
-
-        <div
-          className="hero-line"
-          style={{ "--hero-delay": "100ms" } as React.CSSProperties}
-        >
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-playfair font-medium text-white tracking-tight leading-[1.1] mb-4">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-playfair font-medium text-white tracking-tight leading-[1.1] mb-6">
             The Invisible Standard
-          </h1>
-        </div>
-
-        {/* Line 2: Headline sub-line */}
-        <div
-          className="hero-line"
-          style={{ "--hero-delay": "250ms" } as React.CSSProperties}
-        >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-playfair font-light text-gray-200 tracking-wide leading-tight mb-12">
-            in Hospitality Operations.
           </h1>
         </div>
 
         {/* Line 3: Subtext */}
         <div
           className="hero-line"
-          style={{ "--hero-delay": "400ms" } as React.CSSProperties}
+          style={{ "--hero-delay": "150ms" } as React.CSSProperties}
         >
-          <p className="text-lg md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto mb-16 opacity-90">
-            Run hospitality on one standard—workflows, service SLAs, inventory &
-            consumables, and room-readiness systems,&nbsp;
+          <p className="text-lg md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto mb-10 opacity-90">
+            Run hospitality operations on one standard—workflows, service SLAs,
+            inventory & consumables, and room-readiness systems,&nbsp;
             <span className="text-white font-normal border-b border-gold/50 pb-0.5">
               powered by&nbsp;OLIN.
             </span>
@@ -98,7 +79,7 @@ export default function Hero() {
         {/* Line 4: CTA */}
         <div
           className="hero-line"
-          style={{ "--hero-delay": "550ms" } as React.CSSProperties}
+          style={{ "--hero-delay": "300ms" } as React.CSSProperties}
         >
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
