@@ -75,7 +75,10 @@ export default function Hero() {
         >
           <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto mb-16 tracking-wide opacity-90">
             Run hospitality on one standard—workflows, service SLAs, inventory &
-            consumables, and room-readiness systems, powered by OLIN.
+            consumables, and room-readiness systems,&nbsp;
+            <span className="font-semibold text-gray-150">
+              powered by&nbsp;OLIN.
+            </span>
           </p>
         </div>
 
