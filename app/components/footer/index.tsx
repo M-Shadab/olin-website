@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1">
             <h3 className="text-2xl font-playfair text-white mb-6">OLIN</h3>
             <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
-              The silent partner in hospitality excellence. enhancing guest
+              The silent partner in hospitality excellence. Enhancing guest
               experience through invisible perfection.
             </p>
             <div className="flex gap-4">
