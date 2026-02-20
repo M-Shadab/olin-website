@@ -1,26 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useActionState } from "react";
 import Turnstile from "react-turnstile";
 import { submitLead } from "../../actions/submit-lead";
 
+const initialState = {
+  success: false,
+  error: "",
+};
+
 export default function PartnerForm() {
   const lineRef = useRef<HTMLDivElement>(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
-    rooms: "",
-    service: "",
-    location: "",
-  });
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  // @ts-ignore - useActionState types might conflict with server action return types depending on strictness
+  const [state, formAction, isPending] = useActionState(
+    submitLead,
+    initialState,
+  );
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [clientMetadata, setClientMetadata] = useState({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,52 +30,40 @@ export default function PartnerForm() {
     );
 
     if (lineRef.current) observer.observe(lineRef.current);
+
+    // Capture Client Metadata
+    const fetchMetadata = async () => {
+      try {
+        const browserData = {
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          platform: navigator.platform,
+          screenResolution: `${window.screen.width}x${window.screen.height}`,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          referrer: document.referrer || "Direct",
+        };
+
+        // Try fetching public IP/Location from client side
+        let ipData = {};
+        try {
+          const res = await fetch("https://ipapi.co/json/");
+          if (res.ok) {
+            ipData = await res.json();
+          }
+        } catch (e) {
+          console.warn("Could not fetch client IP data:", e);
+        }
+
+        setClientMetadata({ ...browserData, ...ipData });
+      } catch (error) {
+        console.error("Error capturing metadata:", error);
+      }
+    };
+
+    fetchMetadata();
+
     return () => observer.disconnect();
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!turnstileToken) {
-      setErrorMessage("Please complete the security check.");
-      return;
-    }
-
-    setStatus("submitting");
-    setErrorMessage("");
-
-    const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => data.append(key, value));
-    data.append("cf-turnstile-response", turnstileToken);
-
-    const result = await submitLead(data);
-
-    if (result.success) {
-      setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-        rooms: "",
-        service: "",
-        location: "",
-      });
-    } else {
-      setStatus("error");
-      setErrorMessage(
-        result.error || "Something went wrong. Please try again.",
-      );
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
 
   return (
     <section
@@ -103,7 +88,7 @@ export default function PartnerForm() {
           </h2>
         </div>
 
-        {status === "success" ? (
+        {state?.success ? (
           <div className="text-center py-12">
             <h3 className="text-3xl font-playfair text-navy mb-4">
               Request Received
@@ -113,7 +98,7 @@ export default function PartnerForm() {
               contact you shortly to discuss a pilot program.
             </p>
             <button
-              onClick={() => setStatus("idle")}
+              onClick={() => window.location.reload()}
               className="mt-8 text-gold text-sm font-bold tracking-[0.2em] uppercase hover:text-navy transition-colors"
             >
               Send another message
@@ -121,16 +106,26 @@ export default function PartnerForm() {
           </div>
         ) : (
           /* The Lead Generation Form */
-          <form onSubmit={handleSubmit} className="space-y-12">
+          <form action={formAction} className="space-y-12">
+            <input
+              type="hidden"
+              name="cf-turnstile-response"
+              value={turnstileToken}
+            />
+            <input
+              type="hidden"
+              name="client_metadata"
+              value={JSON.stringify(clientMetadata)}
+            />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Input Field: Name */}
               <div className="relative group">
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   required
-                  value={formData.name}
-                  onChange={handleChange}
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
                   placeholder="name"
                 />
@@ -148,9 +143,8 @@ export default function PartnerForm() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   required
-                  value={formData.email}
-                  onChange={handleChange}
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
                   placeholder="email"
                 />
@@ -168,8 +162,7 @@ export default function PartnerForm() {
                 <input
                   type="tel"
                   id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
+                  name="phone"
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
                   placeholder="phone"
                 />
@@ -187,8 +180,7 @@ export default function PartnerForm() {
                 <input
                   type="text"
                   id="company"
-                  value={formData.company}
-                  onChange={handleChange}
+                  name="company"
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
                   placeholder="company"
                 />
@@ -206,8 +198,8 @@ export default function PartnerForm() {
               <div className="relative group">
                 <select
                   id="rooms"
-                  value={formData.rooms}
-                  onChange={handleChange}
+                  name="rooms"
+                  defaultValue=""
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
                 >
                   <option value="" disabled>
@@ -230,8 +222,8 @@ export default function PartnerForm() {
               <div className="relative group">
                 <select
                   id="service"
-                  value={formData.service}
-                  onChange={handleChange}
+                  name="service"
+                  defaultValue=""
                   className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
                 >
                   <option value="" disabled>
@@ -256,9 +248,8 @@ export default function PartnerForm() {
             <div className="relative group">
               <textarea
                 id="message"
+                name="message"
                 rows={1}
-                value={formData.message}
-                onChange={handleChange}
                 className="peer block w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light resize-none min-h-[60px]"
                 placeholder="Tell us about your operational needs..."
               ></textarea>
@@ -273,22 +264,40 @@ export default function PartnerForm() {
 
             <div className="relative group">
               <select
-                value={formData.location}
-                onChange={handleChange}
                 id="location"
+                name="location"
+                defaultValue=""
                 className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
               >
                 <option value="" disabled>
                   Location
                 </option>
+                <option value="aerocity">Aerocity</option>
+                <option value="connaught-place">Connaught Place</option>
+                <option value="dwarka">Dwarka</option>
+                <option value="greater-kailash">Greater Kailash</option>
+                <option value="gurugram">Gurugram (General)</option>
+                <option value="gurugram-cyber-hub">Gurugram - Cyber Hub</option>
+                <option value="gurugram-golf-course-road">
+                  Gurugram - Golf Course Road
+                </option>
+                <option value="gurugram-mg-road">Gurugram - MG Road</option>
+                <option value="gurugram-sector-29">Gurugram - Sector 29</option>
+                <option value="janakpuri">Janakpuri</option>
+                <option value="jasola-okhla">Jasola / Okhla</option>
                 <option value="karol-bagh">Karol Bagh</option>
+                <option value="mahipalpur">Mahipalpur</option>
+                <option value="new-friends-colony">New Friends Colony</option>
+                <option value="noida">Noida (General)</option>
+                <option value="noida-sector-18">Noida - Sector 18</option>
+                <option value="noida-sector-62">Noida - Sector 62</option>
                 <option value="paharganj">Paharganj</option>
+                <option value="patel-nagar">Patel Nagar</option>
+                <option value="rajouri-garden">Rajouri Garden</option>
+                <option value="rk-ashram">RK Ashram</option>
                 <option value="saket">Saket</option>
                 <option value="south-delhi">South Delhi</option>
-                <option value="aerocity">Aerocity</option>
-                <option value="rk-ashram">RK Ashram</option>
-                <option value="gurugram">Gurugram</option>
-                <option value="noida">Noida</option>
+                <option value="vasant-kunj">Vasant Kunj</option>
                 <option value="other">Other</option>
               </select>
               <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
@@ -300,7 +309,7 @@ export default function PartnerForm() {
               </label>
             </div>
 
-            <div className="relative pt-8 flex flex-col items-center w-full">
+            <div className="relative md:pt-8 flex flex-col items-center w-full">
               <div className="w-fit md:w-[250px] md:absolute md:right-0 md:top-8 flex justify-center md:block mb-8 md:mb-0 shrink-0 z-10">
                 <div className="bg-gray-50 p-2 rounded">
                   <Turnstile
@@ -314,18 +323,18 @@ export default function PartnerForm() {
 
               <button
                 type="submit"
-                disabled={status === "submitting"}
+                disabled={isPending}
                 className="group relative px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.25em] uppercase overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
               >
                 <div className="absolute inset-0 bg-gold translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                 <span className="relative z-10 group-hover:text-navy transition-colors duration-300">
-                  {status === "submitting" ? "Sending..." : "Submit Inquiry"}
+                  {isPending ? "Sending..." : "Submit Inquiry"}
                 </span>
               </button>
 
-              {errorMessage && (
+              {state?.error && (
                 <p className="text-red-500 text-sm tracking-wide mt-4 order-last md:order-none">
-                  {errorMessage}
+                  {state.error}
                 </p>
               )}
 
