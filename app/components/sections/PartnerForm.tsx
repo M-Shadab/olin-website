@@ -4,10 +4,13 @@ import { useEffect, useRef, useState, useActionState } from "react";
 import Turnstile from "react-turnstile";
 import { submitLead } from "../../actions/submit-lead";
 
+import { getDeviceInfo } from "../../lib/client-device";
+
 const initialState = {
   success: false,
   error: "",
 };
+// ... (rest of imports are fine, just adding this one)
 
 export default function PartnerForm() {
   const lineRef = useRef<HTMLDivElement>(null);
@@ -34,6 +37,8 @@ export default function PartnerForm() {
     // Capture Client Metadata
     const fetchMetadata = async () => {
       try {
+        const deviceInfo = getDeviceInfo();
+
         const browserData = {
           userAgent: navigator.userAgent,
           language: navigator.language,
@@ -41,6 +46,7 @@ export default function PartnerForm() {
           screenResolution: `${window.screen.width}x${window.screen.height}`,
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           referrer: document.referrer || "Direct",
+          ...deviceInfo, // Add type, vendor, model, os, browser
         };
 
         // Try fetching public IP/Location from client side
