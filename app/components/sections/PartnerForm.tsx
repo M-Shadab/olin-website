@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useActionState } from "react";
 import Turnstile from "react-turnstile";
-import InputMask from "react-input-mask";
+import { InputMask } from "@react-input/mask";
 import { submitLead } from "../../actions/submit-lead";
 
 import { getDeviceInfo } from "../../lib/client-device";
@@ -189,8 +189,8 @@ export default function PartnerForm() {
                   <span className="text-gray-400">+91</span>
                 </div>
                 <InputMask
-                  mask="99999 99999"
-                  maskChar={null}
+                  mask="_____ _____"
+                  replacement={{ _: /\d/ }}
                   type="tel"
                   id="phone"
                   name="phone"

@@ -10,13 +10,13 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@react-input/mask": "^2.0.4",
     "lru-cache": "^11.2.6",
     "lucide-react": "^0.570.0",
     "mailchecker": "^6.0.19",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-input-mask": "^2.0.4",
     "react-turnstile": "^1.1.5",
     "ua-parser-js": "^2.0.9",
     "zod": "^4.3.6"
@@ -28,7 +28,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/react-input-mask": "^3.0.6",
     "@vitejs/plugin-react": "^5.1.4",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
