@@ -10,12 +10,15 @@
     "test": "vitest"
   },
   "dependencies": {
+    "lru-cache": "^11.2.6",
     "lucide-react": "^0.570.0",
+    "mailchecker": "^6.0.19",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-turnstile": "^1.1.5",
-    "ua-parser-js": "^2.0.9"
+    "ua-parser-js": "^2.0.9",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -9,18 +9,27 @@ import { getDeviceInfo } from "../../lib/client-device";
 const initialState = {
   success: false,
   error: "",
+  fieldErrors: {} as Record<string, string[]>,
+  fields: {} as Record<string, string>,
+  timestamp: 0,
 };
-// ... (rest of imports are fine, just adding this one)
 
 export default function PartnerForm() {
   const lineRef = useRef<HTMLDivElement>(null);
-  // @ts-ignore - useActionState types might conflict with server action return types depending on strictness
+  // @ts-ignore
   const [state, formAction, isPending] = useActionState(
     submitLead,
     initialState,
   );
   const [turnstileToken, setTurnstileToken] = useState("");
   const [clientMetadata, setClientMetadata] = useState({});
+  const [locationValue, setLocationValue] = useState("");
+
+  useEffect(() => {
+    if (state?.fields?.location) {
+      setLocationValue(state.fields.location);
+    }
+  }, [state?.fields?.location]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,7 +110,11 @@ export default function PartnerForm() {
           </div>
         ) : (
           /* The Lead Generation Form */
-          <form action={formAction} className="space-y-12">
+          <form
+            key={state?.timestamp || "form"}
+            action={formAction}
+            className="space-y-12"
+          >
             <input
               type="hidden"
               name="cf-turnstile-response"
@@ -121,16 +134,24 @@ export default function PartnerForm() {
                   id="name"
                   name="name"
                   required
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
+                  defaultValue={state?.fields?.name || ""}
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.name ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
                   placeholder="name"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.name ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="name"
-                  className="absolute left-0 -top-4 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-gold peer-focus:text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.name ? "text-red-500 peer-focus:text-red-500" : "text-gray-400 peer-focus:text-gold"}`}
                 >
                   Full Name
                 </label>
+                {state?.fieldErrors?.name && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.name[0]}
+                  </p>
+                )}
               </div>
 
               {/* Input Field: Email */}
@@ -140,34 +161,58 @@ export default function PartnerForm() {
                   id="email"
                   name="email"
                   required
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
+                  defaultValue={state?.fields?.email || ""}
+                  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.email ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
                   placeholder="email"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.email ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="email"
-                  className="absolute left-0 -top-4 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-gold peer-focus:text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.email ? "text-red-500 peer-focus:text-red-500" : "text-gray-400 peer-focus:text-gold"}`}
                 >
                   Work Email
                 </label>
+                {state?.fieldErrors?.email && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.email[0]}
+                  </p>
+                )}
               </div>
 
               {/* Input Field: Phone */}
               <div className="relative group">
+                <div className="absolute left-0 top-4 text-navy text-lg font-light flex items-center pr-2">
+                  <span className="text-gray-400">+91</span>
+                </div>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
+                  defaultValue={state?.fields?.phone || ""}
+                  pattern="^[0-9\s\-()]{10,20}$"
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.rawPhone ? "border-red-500" : "border-gray-200"} py-4 pl-12 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
                   placeholder="phone"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.rawPhone ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="phone"
-                  className="absolute left-0 -top-4 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-gold peer-focus:text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:left-12 peer-focus:-top-4 peer-focus:text-xs peer-focus:left-0 tracking-[0.1em] uppercase ${state?.fieldErrors?.rawPhone ? "text-red-500 peer-focus:text-red-500" : "text-gray-400 peer-focus:text-gold"}`}
                 >
-                  Direct Phone
+                  Phone
+                  <span className="text-[9px] text-gray-400 ml-2 normal-case tracking-normal">
+                    (Preferred for WhatsApp)
+                  </span>
                 </label>
+                {state?.fieldErrors?.rawPhone && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.rawPhone[0]}
+                  </p>
+                )}
               </div>
 
               {/* Input Field: Company */}
@@ -176,16 +221,24 @@ export default function PartnerForm() {
                   type="text"
                   id="company"
                   name="company"
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light"
+                  defaultValue={state?.fields?.company || ""}
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.company ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
                   placeholder="company"
                 />
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.company ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="company"
-                  className="absolute left-0 -top-4 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-gold peer-focus:text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.company ? "text-red-500 peer-focus:text-red-500" : "text-gray-400 peer-focus:text-gold"}`}
                 >
-                  Hotel / Company Name
+                  Hotel / Property Name
                 </label>
+                {state?.fieldErrors?.company && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.company[0]}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -194,53 +247,73 @@ export default function PartnerForm() {
                 <select
                   id="rooms"
                   name="rooms"
-                  defaultValue=""
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
+                  defaultValue={state?.fields?.rooms || ""}
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.rooms ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none`}
                 >
                   <option value="" disabled>
                     Select Capacity
                   </option>
-                  <option value="10-50">10 - 50 Rooms</option>
+                  <option value="0-10">0 - 10 Rooms</option>
+                  <option value="10-25">10 - 25 Rooms</option>
+                  <option value="25-50">25 - 50 Rooms</option>
                   <option value="50-100">50 - 100 Rooms</option>
                   <option value="100-250">100 - 250 Rooms</option>
                   <option value="250+">250+ Rooms</option>
                 </select>
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.rooms ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="rooms"
-                  className="absolute left-0 -top-4 text-gold text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.rooms ? "text-red-500 peer-focus:text-red-500" : "text-gold"}`}
                 >
                   Room Count
                 </label>
+                {state?.fieldErrors?.rooms && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.rooms[0]}
+                  </p>
+                )}
               </div>
 
               <div className="relative group">
                 <select
                   id="service"
                   name="service"
-                  defaultValue=""
-                  className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
+                  defaultValue={state?.fields?.service || ""}
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.service ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none`}
                 >
                   <option value="" disabled>
                     Primary Interest
                   </option>
-                  <option value="laundry">Laundry & Linen</option>
-                  <option value="staffing">Staffing Solutions</option>
-                  <option value="amenities">Amenity Curation</option>
-                  <option value="full-suite">Full OLIN Suite</option>
+                  <option value="laundry">Linen & Laundry Operations</option>
+                  <option value="staffing">
+                    Room Readiness & Housekeeping Support
+                  </option>
+                  <option value="amenities">Amenities & Consumables</option>
+                  <option value="full-suite">
+                    Consolidated Operations Partner - Full OLIN Suite
+                  </option>
                 </select>
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.service ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
                 <label
                   htmlFor="service"
-                  className="absolute left-0 -top-4 text-gold text-xs tracking-[0.1em] uppercase"
+                  className={`absolute left-0 -top-4 text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.service ? "text-red-500 peer-focus:text-red-500" : "text-gold"}`}
                 >
-                  Service Interest
+                  Primary Focus Area
                 </label>
+                {state?.fieldErrors?.service && (
+                  <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                    {state.fieldErrors.service[0]}
+                  </p>
+                )}
               </div>
             </div>
 
             {/* Input Field: Message */}
-            <div className="relative group">
+            {/* <div className="relative group">
               <textarea
                 id="message"
                 name="message"
@@ -255,14 +328,15 @@ export default function PartnerForm() {
               >
                 Specific Requirements
               </label>
-            </div>
+            </div> */}
 
             <div className="relative group">
               <select
                 id="location"
                 name="location"
-                defaultValue=""
-                className="peer w-full bg-transparent border-b border-gray-200 py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none"
+                value={locationValue}
+                onChange={(e) => setLocationValue(e.target.value)}
+                className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.location ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none text-lg font-light appearance-none rounded-none`}
               >
                 <option value="" disabled>
                   Location
@@ -295,14 +369,44 @@ export default function PartnerForm() {
                 <option value="vasant-kunj">Vasant Kunj</option>
                 <option value="other">Other</option>
               </select>
-              <div className="absolute bottom-0 left-0 w-0 h-px bg-gold transition-all duration-500 peer-focus:w-full"></div>
+              <div
+                className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.location ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+              ></div>
               <label
                 htmlFor="location"
-                className="absolute left-0 -top-4 text-gold text-xs tracking-[0.1em] uppercase"
+                className={`absolute left-0 -top-4 text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.location ? "text-red-500 peer-focus:text-red-500" : "text-gold"}`}
               >
                 Location
               </label>
+              {state?.fieldErrors?.location && (
+                <p className="text-red-500 text-xs mt-1 absolute -bottom-5 left-0">
+                  {state.fieldErrors.location[0]}
+                </p>
+              )}
             </div>
+
+            {locationValue === "other" && (
+              <div className="relative group animate-in fade-in slide-in-from-top-4 duration-500 mt-12">
+                <input
+                  type="text"
+                  id="customLocation"
+                  name="customLocation"
+                  required
+                  defaultValue={state?.fields?.customLocation || ""}
+                  className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.location ? "border-red-500" : "border-gray-200"} py-4 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
+                  placeholder="Please specify location"
+                />
+                <div
+                  className={`absolute bottom-0 left-0 w-0 h-px ${state?.fieldErrors?.location ? "bg-red-500 w-full" : "bg-gold"} transition-all duration-500 peer-focus:w-full`}
+                ></div>
+                <label
+                  htmlFor="customLocation"
+                  className={`absolute left-0 -top-4 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-4 peer-focus:-top-4 peer-focus:text-xs tracking-[0.1em] uppercase ${state?.fieldErrors?.location ? "text-red-500 peer-focus:text-red-500" : "text-gray-400 peer-focus:text-gold"}`}
+                >
+                  Specific Location
+                </label>
+              </div>
+            )}
 
             <div className="relative md:pt-8 flex flex-col items-center w-full">
               <div className="w-fit md:w-[250px] md:absolute md:right-0 md:top-8 flex justify-center md:block mb-8 md:mb-0 shrink-0 z-10">

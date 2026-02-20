@@ -3,8 +3,16 @@
 import { verifyTurnstileToken } from "../lib/turnstile";
 import { submitLeadToOlin, LeadPayload } from "../lib/olin-api";
 import { sendSuccessAlert, sendFailureAlert } from "../lib/telegram";
+import { leadSchema } from "../lib/validations/lead";
+import { getLeadMetadata } from "../lib/lead-metadata";
+import { LRUCache } from "lru-cache";
 
-import { headers } from "next/headers";
+// LRU In-Memory Rate Limiting (Prevents Memory Leaks)
+const rateLimitCache = new LRUCache<string, { count: number, lastReset: number }>({
+    max: 500, // Maximum of 500 unique IPs tracked at a time 
+    ttl: 60 * 60 * 1000 // 1 hour TTL
+});
+const RATE_LIMIT_MAX = 10; // Max 10 submissions per hour
 
 export async function submitLead(prevState: any, formData: FormData) {
     const turnstileToken = formData.get("cf-turnstile-response") as string;
@@ -12,71 +20,79 @@ export async function submitLead(prevState: any, formData: FormData) {
     // Extract Form Data
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
+    const rawPhone = formData.get("phone") as string;
     const company = formData.get("company") as string;
-    const message = formData.get("message") as string;
-    const rooms = formData.get("rooms") as string;
-    const service = formData.get("service") as string;
-    const location = formData.get("location") as string;
+    const message = formData.get("message") as string || "";
+    const rooms = formData.get("rooms") as string || "";
+    const service = formData.get("service") as string || "";
+    const baseLocation = formData.get("location") as string || "";
+    const customLocation = formData.get("customLocation") as string || "";
 
-    const headerStore = await headers();
-    const serverUserAgent = headerStore.get("user-agent") || "Unknown";
-    const forwardedFor = headerStore.get("x-forwarded-for");
-    let serverIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "Unknown";
-    serverIp = serverIp === "Unknown" ? (headerStore.get("x-real-ip") || "Unknown") : serverIp;
-    const serverCity = headerStore.get("x-vercel-ip-city") || "Unknown";
-    const serverCountry = headerStore.get("x-vercel-ip-country") || "Unknown";
-    const serverLat = headerStore.get("x-vercel-ip-latitude") || "";
-    const serverLon = headerStore.get("x-vercel-ip-longitude") || "";
+    const location = baseLocation === "other" && customLocation ? customLocation : baseLocation;
+    const fields = { name, email, phone: rawPhone, company, message, rooms, service, location: baseLocation, customLocation };
 
-    // Parse Client Metadata (Visual/Browser context)
-    let clientMeta: any = {};
-    try {
-        const rawClientMeta = formData.get("client_metadata") as string;
-        if (rawClientMeta) {
-            clientMeta = JSON.parse(rawClientMeta);
-        }
-    } catch (e) {
-        console.warn("Failed to parse client metadata", e);
+    // Run Zod Validation on critical fields
+    const validationResult = leadSchema.safeParse({ name, company, rooms, service, location: baseLocation, email, rawPhone });
+    if (!validationResult.success) {
+        return {
+            success: false,
+            error: "Please fix the highlighted errors.",
+            fieldErrors: validationResult.error.flatten().fieldErrors,
+            fields,
+            timestamp: Date.now()
+        };
     }
 
-    // Server-Side IP Lookup (Privacy Focused)
-    let serverIpData: any = {};
-    if (serverIp && serverIp !== "Unknown" && serverIp !== "127.0.0.1") {
-        try {
-            const res = await fetch(`https://ipapi.co/${serverIp}/json/`);
-            if (res.ok) {
-                serverIpData = await res.json();
+    const phone = rawPhone ? (rawPhone.startsWith("+91") || rawPhone.startsWith("91") ? rawPhone : `+91 ${rawPhone}`) : "";
+
+    // Parse Metadata
+    const metadata = await getLeadMetadata(formData);
+
+    // Rate Limiting Check
+    const ip = metadata.ip;
+    if (ip && ip !== "Unknown") {
+        const now = Date.now();
+        const record = rateLimitCache.get(ip);
+        if (record) {
+            if (now - record.lastReset > rateLimitCache.ttl) {
+                rateLimitCache.set(ip, { count: 1, lastReset: now });
+            } else if (record.count >= RATE_LIMIT_MAX) {
+                // Rate limit triggered! Build temporary payload for Alert
+                const alertPayload: LeadPayload = {
+                    name, email, phone, company, message, rooms, service, location,
+                    source: "website", page: "home",
+                    metadata: { submittedAt: new Date().toISOString(), ...metadata }
+                };
+
+                await sendFailureAlert({
+                    status: 429,
+                    reason: "Rate Limit Exceeded (10 submissions/hour)",
+                    payload: alertPayload
+                });
+
+                return {
+                    success: false,
+                    error: "Too many requests. Please try again later.",
+                    fieldErrors: {},
+                    fields,
+                    timestamp: Date.now()
+                };
+            } else {
+                record.count++;
             }
-        } catch (e) {
-            console.warn("Server-side IP lookup failed", e);
+        } else {
+            rateLimitCache.set(ip, { count: 1, lastReset: now });
         }
     }
 
-    // Prioritize Server IP Data (fetched securely) -> Client Data -> Header Fallback
-    const ip = serverIp;
-    const city = serverIpData.city || clientMeta.city || serverCity;
-    const country = serverIpData.country_name || clientMeta.country_name || clientMeta.country || serverCountry;
-    const latitude = serverIpData.latitude || clientMeta.latitude || serverLat;
-    const longitude = serverIpData.longitude || clientMeta.longitude || serverLon;
-    const userAgent = clientMeta.userAgent || serverUserAgent;
+    console.log(`[Lead Submission] Started for: ${email} (${company}) from IP: ${metadata.ip} (${metadata.deviceType} - ${metadata.deviceModel})`);
 
-    // Extra client specific fields
-    const screenRes = clientMeta.screenResolution;
-    const timezone = clientMeta.timezone;
-    const referrer = clientMeta.referrer;
-    const deviceType = clientMeta.type || "Unknown";
-    const deviceVendor = clientMeta.vendor || "Unknown";
-    const deviceModel = clientMeta.model || "Unknown";
-    const os = clientMeta.os || "Unknown";
-    const browser = clientMeta.browser || "Unknown";
-
-    console.log(`[Lead Submission] Started for: ${email} (${company}) from IP: ${ip} (${deviceType} - ${deviceModel})`);
-
-    // 1. Verify Turnstile
-    const turnstileResult = await verifyTurnstileToken(turnstileToken);
-    if (!turnstileResult.success) {
-        return { success: false, error: turnstileResult.error };
+    // 1. Verify Turnstile (skip in Dev)
+    if (process.env.NODE_ENV !== "development") {
+        const turnstileResult = await verifyTurnstileToken(turnstileToken);
+        if (!turnstileResult.success) {
+            return { success: false, error: turnstileResult.error, fields, timestamp: Date.now() };
+        }
     }
 
     // 2. Prepare Payload
@@ -93,20 +109,7 @@ export async function submitLead(prevState: any, formData: FormData) {
         page: "home",
         metadata: {
             submittedAt: new Date().toISOString(),
-            userAgent,
-            ip,
-            city,
-            country,
-            latitude,
-            longitude,
-            screenResolution: screenRes,
-            timezone,
-            referrer,
-            deviceType,
-            deviceVendor,
-            deviceModel,
-            os,
-            browser,
+            ...metadata
         },
     };
 
@@ -121,7 +124,7 @@ export async function submitLead(prevState: any, formData: FormData) {
                 reason: apiResult.errorText,
                 payload: leadPayload
             });
-            return { success: false, error: "Failed to submit lead to system. Please try again later." };
+            return { success: false, error: "Failed to submit lead to system. Please try again later.", fields, timestamp: Date.now() };
         }
 
         console.log(`[Lead Submission] Success: Lead created for ${email}`);
@@ -140,6 +143,6 @@ export async function submitLead(prevState: any, formData: FormData) {
             context: { email, company }
         });
 
-        return { success: false, error: "An unexpected error occurred." };
+        return { success: false, error: "An unexpected error occurred.", fields, timestamp: Date.now() };
     }
 }

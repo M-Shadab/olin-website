@@ -79,24 +79,26 @@ User: ${errorDetails.context?.email}
 Company: ${errorDetails.context?.company}
 `;
     } else {
-        // API Error
+        // API Error or Rate Limit
         const payload = errorDetails.payload || {};
         const meta = payload.metadata || {};
 
-        message = `
-🚨 *Lead Submission Failed* 🚨
+        const header = errorDetails.status === 429 ? "🚨 *RATE LIMIT SPAM ALERT* 🚨" : "🚨 *Lead Submission Failed* 🚨";
 
-*Error Code:* ${errorDetails.status}
+        message = `
+${header}
+
+*Error Code:* ${errorDetails.status || "N/A"}
 *Reason:* ${errorDetails.reason}
 
 *User Context:*
-*IP:* ${meta.ip}
-*Location:* ${meta.city}, ${meta.country}
-*Device:* ${meta.userAgent}
+*IP:* ${meta.ip || "Unknown"}
+*Location:* ${meta.city || "Unknown"}, ${meta.country || "Unknown"}
+*Device:* ${meta.deviceType || "Unknown"} | ${meta.userAgent || "Unknown"}
 
-*Payload:*
+*Payload Attempted:*
 \`\`\`json
-${JSON.stringify(errorDetails.payload, null, 2)}
+${JSON.stringify(errorDetails.payload || errorDetails.context, null, 2)}
 \`\`\`
 `;
     }
