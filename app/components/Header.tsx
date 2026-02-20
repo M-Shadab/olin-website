@@ -94,9 +94,9 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex gap-8 text-xs font-bold tracking-[0.15em] uppercase text-navy/60">
-            {/* <Link href="/" className="hover:text-navy transition-colors">
+            <Link href="/" className="hover:text-navy transition-colors">
               Home
-            </Link> */}
+            </Link>
             {/* <a href="#" className="hover:text-navy transition-colors">
               Services
             </a> */}

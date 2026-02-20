@@ -73,7 +73,7 @@ export default function Home() {
                   src="/imgs/founder-best.jpg"
                   alt="Founder of OLIN"
                   fill
-                  className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                   priority
                 />
               </div>
@@ -111,7 +111,7 @@ export default function Home() {
                   arise, they are visible and actionable, not hidden.
                 </p>
                 <div className="reveal-up reveal-delay-500 pt-8 opacity-0">
-                  <blockquote className="text-navy font-playfair text-2xl md:text-3xl leading-snug border-l-2 border-gold pl-6 py-2">
+                  <blockquote className="text-navy font-playfair italic text-2xl md:text-3xl leading-snug border-l-2 border-gold pl-6 py-2">
                     "Our mission is to give hospitality operators predictable
                     operations, controlled costs, and operational peace of
                     mind."
@@ -121,7 +121,7 @@ export default function Home() {
                       Mohd Shadab
                     </p> */}
                     <Image
-                      src="/svgs/founder-sign-gold.svg"
+                      src="/svgs/founder-sign-gold-underline.svg"
                       alt="Sign of Founder of OLIN"
                       width={160}
                       height={160}
