@@ -12,7 +12,7 @@ const rateLimitCache = new LRUCache<string, { count: number, lastReset: number }
     max: 500, // Maximum of 500 unique IPs tracked at a time 
     ttl: 60 * 60 * 1000 // 1 hour TTL
 });
-const RATE_LIMIT_MAX = 10; // Max 10 submissions per hour
+const LEAD_CAPTURE_RATE_LIMIT_MAX = parseInt(process.env.LEAD_CAPTURE_RATE_LIMIT_MAX || "10", 10); // Max submissions per hour
 
 export async function submitLead(prevState: any, formData: FormData) {
     const turnstileToken = formData.get("cf-turnstile-response") as string;
@@ -56,7 +56,7 @@ export async function submitLead(prevState: any, formData: FormData) {
         if (record) {
             if (now - record.lastReset > rateLimitCache.ttl) {
                 rateLimitCache.set(ip, { count: 1, lastReset: now });
-            } else if (record.count >= RATE_LIMIT_MAX) {
+            } else if (record.count >= LEAD_CAPTURE_RATE_LIMIT_MAX) {
                 // Rate limit triggered! Build temporary payload for Alert
                 const alertPayload: LeadPayload = {
                     name, email, phone, company, message, rooms, service, location,

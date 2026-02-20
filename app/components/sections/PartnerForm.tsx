@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useActionState } from "react";
 import Turnstile from "react-turnstile";
+import InputMask from "react-input-mask";
 import { submitLead } from "../../actions/submit-lead";
 
 import { getDeviceInfo } from "../../lib/client-device";
@@ -187,12 +188,13 @@ export default function PartnerForm() {
                 <div className="absolute left-0 top-4 text-navy text-lg font-light flex items-center pr-2">
                   <span className="text-gray-400">+91</span>
                 </div>
-                <input
+                <InputMask
+                  mask="99999 99999"
+                  maskChar={null}
                   type="tel"
                   id="phone"
                   name="phone"
                   defaultValue={state?.fields?.phone || ""}
-                  pattern="^[0-9\s\-()]{10,20}$"
                   className={`peer w-full bg-transparent border-b ${state?.fieldErrors?.rawPhone ? "border-red-500" : "border-gray-200"} py-4 pl-12 text-navy focus:outline-none placeholder-transparent text-lg font-light`}
                   placeholder="phone"
                 />
