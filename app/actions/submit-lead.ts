@@ -21,7 +21,9 @@ export async function submitLead(prevState: any, formData: FormData) {
 
     const headerStore = await headers();
     const serverUserAgent = headerStore.get("user-agent") || "Unknown";
-    const serverIp = headerStore.get("x-forwarded-for") || headerStore.get("x-real-ip") || "Unknown";
+    const forwardedFor = headerStore.get("x-forwarded-for");
+    let serverIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "Unknown";
+    serverIp = serverIp === "Unknown" ? (headerStore.get("x-real-ip") || "Unknown") : serverIp;
     const serverCity = headerStore.get("x-vercel-ip-city") || "Unknown";
     const serverCountry = headerStore.get("x-vercel-ip-country") || "Unknown";
     const serverLat = headerStore.get("x-vercel-ip-latitude") || "";
@@ -38,12 +40,25 @@ export async function submitLead(prevState: any, formData: FormData) {
         console.warn("Failed to parse client metadata", e);
     }
 
-    // Prioritize Client Data for "User Context", Fallback to Server
-    const ip = clientMeta.ip || serverIp;
-    const city = clientMeta.city || serverCity;
-    const country = clientMeta.country_name || clientMeta.country || serverCountry; // ipapi uses country_name
-    const latitude = clientMeta.latitude || serverLat;
-    const longitude = clientMeta.longitude || serverLon;
+    // Server-Side IP Lookup (Privacy Focused)
+    let serverIpData: any = {};
+    if (serverIp && serverIp !== "Unknown" && serverIp !== "127.0.0.1") {
+        try {
+            const res = await fetch(`https://ipapi.co/${serverIp}/json/`);
+            if (res.ok) {
+                serverIpData = await res.json();
+            }
+        } catch (e) {
+            console.warn("Server-side IP lookup failed", e);
+        }
+    }
+
+    // Prioritize Server IP Data (fetched securely) -> Client Data -> Header Fallback
+    const ip = serverIp;
+    const city = serverIpData.city || clientMeta.city || serverCity;
+    const country = serverIpData.country_name || clientMeta.country_name || clientMeta.country || serverCountry;
+    const latitude = serverIpData.latitude || clientMeta.latitude || serverLat;
+    const longitude = serverIpData.longitude || clientMeta.longitude || serverLon;
     const userAgent = clientMeta.userAgent || serverUserAgent;
 
     // Extra client specific fields

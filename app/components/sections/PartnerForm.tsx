@@ -49,18 +49,7 @@ export default function PartnerForm() {
           ...deviceInfo, // Add type, vendor, model, os, browser
         };
 
-        // Try fetching public IP/Location from client side
-        let ipData = {};
-        try {
-          const res = await fetch("https://ipapi.co/json/");
-          if (res.ok) {
-            ipData = await res.json();
-          }
-        } catch (e) {
-          console.warn("Could not fetch client IP data:", e);
-        }
-
-        setClientMetadata({ ...browserData, ...ipData });
+        setClientMetadata({ ...browserData });
       } catch (error) {
         console.error("Error capturing metadata:", error);
       }
