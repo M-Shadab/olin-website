@@ -23,6 +23,9 @@ export interface LeadPayload {
         screenResolution?: string;
         timezone?: string;
         referrer?: string;
+        deviceType?: string;
+        deviceVendor?: string;
+        deviceModel?: string;
     };
 }
 

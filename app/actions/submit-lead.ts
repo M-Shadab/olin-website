@@ -50,8 +50,13 @@ export async function submitLead(prevState: any, formData: FormData) {
     const screenRes = clientMeta.screenResolution;
     const timezone = clientMeta.timezone;
     const referrer = clientMeta.referrer;
+    const deviceType = clientMeta.type || "Unknown";
+    const deviceVendor = clientMeta.vendor || "Unknown";
+    const deviceModel = clientMeta.model || "Unknown";
+    const os = clientMeta.os || "Unknown";
+    const browser = clientMeta.browser || "Unknown";
 
-    console.log(`[Lead Submission] Started for: ${email} (${company}) from IP: ${ip}`);
+    console.log(`[Lead Submission] Started for: ${email} (${company}) from IP: ${ip} (${deviceType} - ${deviceModel})`);
 
     // 1. Verify Turnstile
     const turnstileResult = await verifyTurnstileToken(turnstileToken);
@@ -82,6 +87,11 @@ export async function submitLead(prevState: any, formData: FormData) {
             screenResolution: screenRes,
             timezone,
             referrer,
+            deviceType,
+            deviceVendor,
+            deviceModel,
+            os,
+            browser,
         },
     };
 

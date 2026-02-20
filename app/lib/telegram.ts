@@ -46,7 +46,8 @@ export async function sendSuccessAlert(lead: any) {
 🌍 *User Metadata*
 *IP:* ${meta.ip}
 *Location:* ${locationStr} ${geoLink}
-*Device:* ${meta.userAgent}
+*Device:* ${meta.deviceType || "Unknown"} | ${meta.deviceVendor || "Unknown"} ${meta.deviceModel || ""}
+*System:* ${meta.os || "Unknown"} | ${meta.browser || "Unknown"}
 *Screen:* ${meta.screenResolution || "Unknown"}
 *Timezone:* ${meta.timezone || "Unknown"}
 *Referrer:* ${meta.referrer || "Direct"}
