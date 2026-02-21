@@ -5,41 +5,67 @@ import { useEffect, useRef } from "react";
 const items = [
   {
     number: "01",
-    title: "Laundry & Linen",
+    title: "Structured Service",
     description:
-      "High-capacity washing, precision pressing, and spotless delivery specific to your inventory.",
+      "Defined pickup cycles and controlled processing timelines that ensure consistent room-readiness — without last-minute coordination.",
   },
   {
     number: "02",
-    title: "Supply & Rotation",
+    title: "Inventory & Supply",
     description:
-      "Automated inventory management ensuring you never run short of daily essentials.",
+      "Organized stock rotation and consumption oversight that protect continuity and prevent service disruption.",
   },
   {
     number: "03",
-    title: "Guest Room Support",
+    title: "On-Property Coordination",
     description:
-      "Beyond just sheets—duvets, robes, and specialized room textiles handled with care.",
+      "Execution aligned to defined standards, clear responsibilities, and documented communication protocols.",
   },
   {
     number: "04",
-    title: "Amenity Curations",
-    description:
-      "Curated bathroom and room amenities from premium brands, packaged for your brand.",
-  },
-  {
-    number: "05",
-    title: "Facility Supply",
-    description:
-      "Housekeeping carts, cleaning chemicals, and staff uniforms sourced and delivered.",
-  },
-  {
-    number: "06",
-    title: "Sustainable Green-Care",
-    description:
-      "Eco-friendly processing options significantly reducing water and energy usage.",
+    title: "Performance Visibility",
+    description: `Measured service timelines, reporting clarity, and operational transparency.
+    You don’t just receive service — you see how it performs.`,
   },
 ];
+// const items = [
+//   {
+//     number: "01",
+//     title: "Laundry & Linen",
+//     description:
+//       "High-capacity washing, precision pressing, and spotless delivery specific to your inventory.",
+//   },
+//   {
+//     number: "02",
+//     title: "Supply & Rotation",
+//     description:
+//       "Automated inventory management ensuring you never run short of daily essentials.",
+//   },
+//   {
+//     number: "03",
+//     title: "Guest Room Support",
+//     description:
+//       "Beyond just sheets—duvets, robes, and specialized room textiles handled with care.",
+//   },
+//   {
+//     number: "04",
+//     title: "Amenity Curations",
+//     description:
+//       "Curated bathroom and room amenities from premium brands, packaged for your brand.",
+//   },
+//   {
+//     number: "05",
+//     title: "Facility Supply",
+//     description:
+//       "Housekeeping carts, cleaning chemicals, and staff uniforms sourced and delivered.",
+//   },
+//   {
+//     number: "06",
+//     title: "Sustainable Green-Care",
+//     description:
+//       "Eco-friendly processing options significantly reducing water and energy usage.",
+//   },
+// ];
 
 export default function Framework() {
   const headingRef = useRef<HTMLDivElement>(null);
@@ -109,7 +135,7 @@ export default function Framework() {
         </div>
 
         {/* Mobile: Horizontal scroll, Desktop: Clean Grid */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide">
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-12 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide">
           {items.map((item, index) => (
             <div
               key={item.number}

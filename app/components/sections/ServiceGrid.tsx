@@ -14,8 +14,7 @@ const services = [
     // title: "Operational Framework",
     title: "Structured Operations",
     // subtitle: "Spotless Daily Service",
-    subtitle:
-      "System managing daily operations, service timelines, and inventory coordination.",
+    subtitle: "Predictable service timelines.",
   },
   {
     src: "/imgs/services/service-2.jpg",
@@ -26,9 +25,9 @@ const services = [
     // title: "Supply & Asset Intelligence",
     title: "Inventory & Supply Control",
     // subtitle: "Textiles & Robes",
-    subtitle:
-      // "Structured inventory rotation, consumption forecasting, and continuity planning to eliminate operational disruption.",
-      "Organized inventory rotation and demand planning to ensure uninterrupted service.",
+    subtitle: "Prevent operational gaps - organized rotation.",
+    // "Organized rotation and demand planning to prevent operational gaps.",
+    // "Structured inventory rotation, consumption forecasting, and continuity planning to eliminate operational disruption.",
     // "Real-time tracking and managed rotation of operational assets to ensure uninterrupted service delivery.",
   },
   {
@@ -38,8 +37,8 @@ const services = [
     // title: "Operational Support",
     title: "On-Property Support",
     // title: "Housekeeping",
-    subtitle:
-      "On-property execution aligned with clear workflows and service standards.",
+    subtitle: "Defined execution standards.",
+    // subtitle:"Execution aligned with defined standards and clear responsibilities.",
     // "On-ground execution aligned with structured workflows, SLAs, and performance benchmarks.",
     // subtitle: "Staff Augmentation",
   },
@@ -50,8 +49,8 @@ const services = [
     // title: "Performance Intelligence Layer",
     // title: "Performance & Commercial Uplift",
     title: "Performance Tracking",
-    subtitle:
-      "Clear reporting and measurable improvements in service quality and cost efficiency.",
+    subtitle: "Measured service visibility.",
+    // subtitle:"Measured service visibility with clear reporting and accountability.",
     // "Turning structured operations into measurable gains across service quality, cost control, and revenue performance.",
     // "Measurable improvements across service quality, operational efficiency, and cost control.",
     // subtitle: "Chemicals & Carts",
