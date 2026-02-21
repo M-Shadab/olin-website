@@ -3,23 +3,46 @@
 import { useEffect, useRef } from "react";
 import { Workflow, Clock, Scaling } from "lucide-react";
 
+// const pillars = [
+//   {
+//     title: "Consistent Quality",
+//     description:
+//       "Every linen, every day. Industrial consistency with boutique care.",
+//     icon: Workflow,
+//   },
+//   {
+//     title: "Reliable Timing",
+//     description:
+//       "GPS-tracked logistics. We arrive before you need us, every time.",
+//     icon: Clock,
+//   },
+//   {
+//     title: "Adaptive Solutions",
+//     description:
+//       "From 10 rooms to 500. We scale our operations to match your growth.",
+//     icon: Scaling,
+//   },
+// ];
+
+// description: "Structured daily operations and service timelines.",
+
 const pillars = [
   {
-    title: "Consistent Quality",
+    title: "Clear Workflows",
     description:
-      "Every linen, every day. Industrial consistency with boutique care.",
+      "Structured processes that keep daily operations organized and predictable.",
     icon: Workflow,
   },
   {
-    title: "Reliable Timing",
+    title: "Dependable Service",
     description:
-      "GPS-tracked logistics. We arrive before you need us, every time.",
+      "Consistent turnaround and disciplined coordination you can rely on.",
     icon: Clock,
   },
   {
-    title: "Adaptive Solutions",
+    title: "Scalable Support",
     description:
-      "From 10 rooms to 500. We scale our operations to match your growth.",
+      "A structured operating model that supports your property as it expands.",
     icon: Scaling,
   },
 ];
