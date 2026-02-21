@@ -6,38 +6,55 @@ import { useEffect, useRef } from "react";
 const services = [
   {
     // src: "/imgs/sec-1-1.1.jpg",
-    src: "/imgs/sec-1-1.2.jpg",
-    srcMobile: "/imgs/sec-1-1.2-mobile.jpg",
+    src: "/imgs/services/service-1.jpg",
+    srcMobile: "/imgs/services/service-1.jpg",
+    // srcMobile: "/imgs/sec-1-1.2-mobile.jpg",
     alt: "Premium Towels",
-    title: "Laundry & Linen",
-    subtitle: "Spotless Daily Service",
+    // title: "Laundry & Linen",
+    title: "Operational Framework",
+    // subtitle: "Spotless Daily Service",
+    subtitle:
+      "A unified system managing operations, service timelines, and inventory coordination.",
   },
   {
-    src: "/imgs/sec-1-2.1.jpg",
-    srcMobile: "/imgs/sec-1-2.1-mobile.2.jpg",
+    src: "/imgs/services/service-2.jpg",
+    // src: "/imgs/sec-1-2.1.jpg",
+    srcMobile: "/imgs/services/service-2.jpg",
     alt: "Staff Support",
-    title: "Room Support",
-    subtitle: "Textiles & Robes",
+    // title: "Room Support",
+    title: "Supply & Asset Intelligence",
+    // subtitle: "Textiles & Robes",
+    subtitle:
+      "Structured inventory rotation, consumption forecasting, and continuity planning to eliminate operational disruption.",
+    // "Real-time tracking and managed rotation of operational assets to ensure uninterrupted service delivery.",
   },
   {
-    src: "/imgs/sec-1-3.png",
-    srcMobile: "/imgs/sec-1-3-mobile.png",
+    src: "/imgs/services/service-3.jpg",
+    srcMobile: "/imgs/services/service-3.jpg",
     alt: "Housekeeping",
-    title: "Housekeeping",
-    subtitle: "Staff Augmentation",
+    title: "Operational Support",
+    // title: "Housekeeping",
+    subtitle:
+      "On-ground execution aligned with structured workflows, SLAs, and performance benchmarks.",
+    // subtitle: "Staff Augmentation",
   },
   {
-    src: "/imgs/sec-1-4.4.jpg",
+    src: "/imgs/services/service-4.jpg",
+    // src: "/imgs/sec-1-4.4.jpg",
     alt: "Amenities",
-    title: "Facility Supply",
-    subtitle: "Chemicals & Carts",
+    // title: "Performance Intelligence Layer",
+    title: "Performance & Commercial Uplift",
+    subtitle:
+      "Turning structured operations into measurable gains across service quality, cost control, and revenue performance.",
+    // "Measurable improvements across service quality, operational efficiency, and cost control.",
+    // subtitle: "Chemicals & Carts",
   },
-  {
-    src: "/imgs/sec-1-5.3.png",
-    alt: "Sustainability",
-    title: "Sustainability",
-    subtitle: "Eco-Certified Process",
-  },
+  // {
+  //   src: "/imgs/sec-1-5.3.png",
+  //   alt: "Sustainability",
+  //   title: "Sustainability",
+  //   subtitle: "Eco-Certified Process",
+  // },
 ];
 
 const STAGGER_MS = 120;
@@ -93,7 +110,7 @@ export default function ServiceGrid() {
   return (
     <section className="w-full px-6 -mt-20 relative z-30 mb-24">
       <div className="max-w-7xl mx-auto">
-        <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide flex-col md:flex-row">
+        <div className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide flex-col md:flex-row">
           {services.map((service, index) => (
             <div
               key={service.title}
@@ -109,7 +126,7 @@ export default function ServiceGrid() {
                   src={service.srcMobile ?? service.src}
                   alt={service.alt}
                   fill
-                  className="object-cover object-bottom transition-transform duration-[1.5s] ease-out group-hover:scale-105 block md:hidden"
+                  className="object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-105 block md:hidden"
                   priority={index === 0}
                 />
                 {/* Desktop image — shown only at md and above */}
