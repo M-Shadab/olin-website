@@ -51,8 +51,8 @@ export default function Home() {
               Vision & Leadership
             </h1>
             <p className="reveal-up reveal-delay-200 text-xl md:text-2xl text-white/70 font-light leading-relaxed max-w-2xl mx-auto opacity-0">
-              Building reliable hospitality operations—so owners and operators
-              can focus on growth, not daily firefighting.
+              Building reliable hospitality infrastructure—so owners and
+              operators can focus on growth, not daily firefighting.
             </p>
           </div>
         </section>
@@ -85,31 +85,56 @@ export default function Home() {
                 The Founder
               </span>
               <h2 className="reveal-up reveal-delay-100 text-4xl md:text-5xl lg:text-6xl font-playfair text-navy mb-12 opacity-0 leading-tight">
-                Commitment to <br />
-                Operational Excellence
+                A Systems Approach <br />
+                to Hospitality
               </h2>
-              <div className="space-y-12 text-gray-600 leading-loose text-lg font-light md:pl-8 border-l border-gray-100 md:border-none">
+              <div className="space-y-10 text-gray-600 leading-loose text-lg font-light md:pl-8 border-l border-gray-100 md:border-none">
                 <p className="reveal-up reveal-delay-200 opacity-0">
-                  OLIN was founded to solve a silent but costly problem across
-                  hospitality operations: daily services fail in small ways that
-                  compound—missed pickups, inconsistent linen quality,
-                  stock-outs of essentials, and no visibility when things go
-                  wrong.
+                  OLIN was founded to address a pattern most properties quietly
+                  accept:
                 </p>
-                <p className="reveal-up reveal-delay-300 opacity-0">
-                  Our leadership brings a systems-first approach to hospitality
-                  operations. OLIN is built around standard operating
-                  procedures, service-level accountability, and real-time
-                  coordination—so properties don’t depend on fragmented vendors
-                  or manual follow-ups.
+
+                {/* Pain-point list — short lines for emphasis */}
+                <ul className="reveal-up reveal-delay-300 opacity-0 space-y-2 pl-0 list-none">
+                  {[
+                    "Missed pickups.",
+                    "Inconsistent linen cycles.",
+                    "Stock-outs of essentials.",
+                    "No clear ownership when services fail.",
+                  ].map((line) => (
+                    <li key={line} className="text-navy/80 font-light">
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="reveal-up reveal-delay-400 opacity-0 text-navy font-medium">
+                  Individually small. Collectively expensive.
                 </p>
+
                 <p className="reveal-up reveal-delay-400 opacity-0">
-                  We operate as a long-term operations partner, not a
-                  transactional supplier. Every service touchpoint—linen
-                  lifecycle, inventory & consumables, room-readiness
-                  workflows—is tracked against defined standards. When issues
-                  arise, they are visible and actionable, not hidden.
+                  OLIN applies a systems-first approach to hospitality
+                  operations — replacing fragmented vendors and manual
+                  follow-ups with defined workflows, service-level
+                  accountability, and structured coordination.
                 </p>
+
+                <div className="reveal-up reveal-delay-500 opacity-0 space-y-3">
+                  <p className="text-navy font-medium">
+                    We do not operate as a supplier.
+                  </p>
+                  <p className="text-navy font-medium">
+                    We operate as an operational backbone.
+                  </p>
+                </div>
+
+                <p className="reveal-up reveal-delay-500 opacity-0">
+                  Every service layer — linen lifecycle, inventory continuity,
+                  room-readiness standards — is measured against defined
+                  benchmarks. When issues arise, they are visible, traceable,
+                  and resolved with accountability.
+                </p>
+
                 <div className="reveal-up reveal-delay-500 pt-8 opacity-0">
                   <blockquote className="text-navy font-playfair italic text-2xl md:text-3xl leading-snug border-l-2 border-gold pl-6 py-2">
                     "Our mission is to give hospitality operators predictable
@@ -274,7 +299,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gold translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                 <span className="relative z-10 group-hover:text-navy transition-colors duration-300">
-                  Start 1 Month Pilot
+                  Start a 30-Day Pilot
                 </span>
                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-navy transition-colors duration-300" />
               </Link>
