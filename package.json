@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest"
+    "test": "vitest",
+    "sb:dev": "supabase link --project-ref dev-ref",
+    "sb:staging": "supabase link --project-ref staging-ref",
+    "sb:prod": "supabase link --project-ref mbgwmbrjrgzfprjsbnmh"
   },
   "dependencies": {
     "@react-input/mask": "^2.0.4",
