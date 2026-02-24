@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:all": "npm run test && npm run test:e2e",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
     "sb:dev": "supabase link --project-ref dev-ref",
     "sb:staging": "supabase link --project-ref staging-ref",
     "sb:prod": "supabase link --project-ref mbgwmbrjrgzfprjsbnmh"
@@ -25,6 +31,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
@@ -35,6 +42,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "jsdom": "^28.1.0",
+    "playwright": "^1.58.2",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.0.18"
