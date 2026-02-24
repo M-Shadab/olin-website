@@ -146,15 +146,17 @@ export default function Home() {
                       Mohd Shadab
                     </p> */}
                     <Image
-                      src="/svgs/founder-sign-gold-underline.svg"
+                      src="/svgs/md-founder-sign-gold-underline.svg"
                       alt="Sign of Founder of OLIN"
-                      width={160}
-                      height={160}
+                      width={260}
+                      height={260}
+                      // width={160}
+                      // height={160}
                       className="opacity-95"
                       priority
                     />
                     <p className="text-sm text-gray-400 uppercase tracking-widest mt-2">
-                      Founder, OLIN Hospitality
+                      Founder & CEO, OLIN Hospitality
                     </p>
                   </div>
                 </div>
