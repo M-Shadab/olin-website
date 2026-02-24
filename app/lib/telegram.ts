@@ -1,29 +1,46 @@
-export async function sendTelegramAlert(token: string, chatId: string, message: string) {
-    if (!token || !chatId) {
-        console.warn("[Telegram] Missing token or chat ID, skipping alert.");
+/**
+ * Telegram Lead Alert Service
+ * 
+ * Thin API client that dispatches neatly formatted lead submission
+ * notifications to the central olin-chat microservice.
+ */
+
+export async function sendTelegramAlert(channel: "LEAD_GEN_SUCCESS" | "LEAD_GEN_FAILED", message: string) {
+    console.log("[Telegram] Sending alert for lead:", message);
+
+    const BASE_URL = process.env.BASE_URL_OLIN_CHAT || "http://localhost:3001";
+    const API_SECRET = process.env.OLIN_CHAT_API_SECRET;
+
+    console.log(`[Telegram] DEBUG → BASE_URL="${BASE_URL}" | SECRET_SET=${!!API_SECRET} | SECRET_LEN=${API_SECRET?.length ?? 0}`);
+
+    if (!API_SECRET) {
+        console.warn(`[Telegram] ❌ Missing OLIN_CHAT_API_SECRET. Cannot dispatch ${channel} alert.`);
         return;
     }
 
     try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        const response = await fetch(`${BASE_URL}/api/telegram/send`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_SECRET}`
+            },
             body: JSON.stringify({
-                chat_id: chatId,
+                channel: channel,
                 text: message,
-                parse_mode: "Markdown",
             }),
         });
+
+        if (!response.ok) {
+            console.error("[Telegram] Central Hub rejected alert:", response.status, await response.text());
+        }
     } catch (err) {
-        console.error("[Telegram] Failed to send alert:", err);
+        console.error("[Telegram] Network error dispatching to central hub:", err);
     }
 }
 
 export async function sendSuccessAlert(lead: any) {
-    const token = process.env.TELEGRAM_LEAD_GEN_SUCCESS_TOKEN;
-    const chatId = process.env.TELEGRAM_LEAD_GEN_SUCCESS_CHAT_ID;
-
-    if (!token || !chatId) return;
+    console.log("[Telegram] Sending success alert for lead:", lead);
 
     const meta = lead.metadata || {};
     const locationStr = meta.city && meta.country ? `${meta.city}, ${meta.country}` : "Unknown";
@@ -56,15 +73,10 @@ export async function sendSuccessAlert(lead: any) {
 📝 *Message:*
 ${lead.message}
 `;
-    await sendTelegramAlert(token, chatId, message);
+    await sendTelegramAlert("LEAD_GEN_SUCCESS", message);
 }
 
 export async function sendFailureAlert(errorDetails: { status?: number; reason?: string; payload?: any; error?: any; context?: any }) {
-    const token = process.env.TELEGRAM_LEAD_GEN_FAILED_TOKEN;
-    const chatId = process.env.TELEGRAM_LEAD_GEN_FAILED_CHAT_ID;
-
-    if (!token || !chatId) return;
-
     let message = "";
 
     if (errorDetails.error) {
@@ -103,5 +115,5 @@ ${JSON.stringify(errorDetails.payload || errorDetails.context, null, 2)}
 `;
     }
 
-    await sendTelegramAlert(token, chatId, message);
+    await sendTelegramAlert("LEAD_GEN_FAILED", message);
 }
