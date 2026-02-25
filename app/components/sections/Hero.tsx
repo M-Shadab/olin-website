@@ -88,7 +88,7 @@ export default function Hero() {
                   .getElementById("partner-form")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="group relative px-12 py-5 text-navy bg-white hover:bg-gold transition-colors duration-500 text-sm font-bold tracking-[0.25em] uppercase overflow-hidden"
+              className="group relative px-12 py-5 text-navy bg-white hover:bg-gold transition-colors duration-500 text-sm font-bold tracking-[0.25em] uppercase overflow-hidden cursor-pointer"
             >
               <span className="relative z-10 transition-colors duration-300">
                 Partner With Us

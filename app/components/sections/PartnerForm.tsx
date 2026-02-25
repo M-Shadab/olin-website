@@ -425,7 +425,7 @@ export default function PartnerForm() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="group relative px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.25em] uppercase overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed shrink-0"
+                className="group relative px-12 py-5 bg-navy text-white text-sm font-bold tracking-[0.25em] uppercase overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer shrink-0"
               >
                 <div className="absolute inset-0 bg-gold translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                 <span className="relative z-10 group-hover:text-navy transition-colors duration-300">
