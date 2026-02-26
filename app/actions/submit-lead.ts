@@ -129,7 +129,7 @@ export async function submitLead(prevState: any, formData: FormData) {
 
         console.log(`[Lead Submission] Success: Lead created for ${email}`);
 
-        // 4. Alert Success
+        // 4. Alert Success via Internal Telegram
         await sendSuccessAlert(leadPayload);
 
         return { success: true };
