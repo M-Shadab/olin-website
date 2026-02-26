@@ -78,19 +78,28 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-white/60 font-light">
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <Link
+                  href="/privacy"
+                  className="hover:text-gold transition-colors"
+                >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <Link
+                  href="/data-deletion"
+                  className="hover:text-gold transition-colors"
+                >
+                  Data Deletion
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms-of-service"
+                  className="hover:text-gold transition-colors"
+                >
                   Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-gold transition-colors">
-                  Cookie Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

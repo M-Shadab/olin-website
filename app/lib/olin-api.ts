@@ -31,7 +31,10 @@ export interface LeadPayload {
 
 export async function submitLeadToOlin(payload: LeadPayload): Promise<{ success: true } | { success: false; error: string; status?: number; errorText?: string }> {
     try {
-        const apiRes = await fetch("https://app.olinhospitality.com/api/lead", {
+        const baseUrl = process.env.BASE_URL_OLIN_OPS_APP || "https://app.olinhospitality.com";
+        const apiUrl = `${baseUrl}/api/lead`;
+
+        const apiRes = await fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
