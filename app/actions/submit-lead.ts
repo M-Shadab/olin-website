@@ -118,7 +118,12 @@ export async function submitLead(prevState: any, formData: FormData) {
         const apiResult = await submitLeadToOlin(leadPayload);
 
         if (!apiResult.success) {
-            // Log & Alert Failure
+            if (apiResult.status === 409) {
+                // User-friendly response for duplicate leads (no Ops alert needed)
+                return { success: false, error: "We already have your details! Our team is reviewing your inquiry and will reach out soon.", fields, timestamp: Date.now() };
+            }
+
+            // Log & Alert Failure for actual system errors
             await sendFailureAlert({
                 status: apiResult.status,
                 reason: apiResult.errorText,
