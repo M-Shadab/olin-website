@@ -72,9 +72,9 @@ body {
   transform: translateY(32px) scale(0.96);
   filter: blur(4px);
   transition:
-    opacity   0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
     transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-    filter    0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
   will-change: opacity, transform, filter;
 }
 
@@ -126,7 +126,7 @@ body {
     transform: scale(1.1) translateY(0px);
   }
   to {
-    transform: scale(1.0) translateY(-12px);
+    transform: scale(1) translateY(-12px);
   }
 }
 
@@ -144,7 +144,7 @@ body {
   opacity: 0;
   transform: translateY(24px);
   transition:
-    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pillars-heading--visible {
@@ -168,9 +168,9 @@ body {
   transform: translateY(28px) scale(0.97);
   filter: blur(3px);
   transition:
-    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms),
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms),
     transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms),
-    filter    0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms);
+    filter 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--pillar-delay, 0ms);
   will-change: opacity, transform, filter;
 }
 .pillar-card--ready.pillar-card--visible {
@@ -238,7 +238,7 @@ body {
   opacity: 0 !important;
   transform: translateY(24px) !important;
   transition:
-    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fw-heading--visible {
@@ -252,9 +252,9 @@ body {
   transform: translateY(24px) !important;
   filter: blur(2px) !important;
   transition:
-    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms),
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms),
-    filter    0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms);
+    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--fw-delay, 0ms);
   will-change: opacity, transform, filter;
 }
 
@@ -262,6 +262,44 @@ body {
   opacity: 1 !important;
   transform: translateY(0) !important;
   filter: blur(0px) !important;
+}
+
+/* ─── OLIN ONE: Scroll Animations ────────────────────────────────────────────
+ *
+ * 1. Heading fade-lift  (.oo-heading → .oo-heading--visible)
+ * 2. Capability cards   (.oo-card--ready → .oo-card--visible)
+ *    Stagger via --oo-delay CSS custom property set by JS
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Heading ── */
+.oo-heading {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.oo-heading--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 2. Capability Cards ── */
+.oo-card--ready {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(2px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms),
+    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.oo-card--ready.oo-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
 }
 
 /* ─── Generic Scroll Reveal Utilities ──────────────────────────────────────── */
@@ -280,13 +318,21 @@ body {
   transform: translateY(0);
 }
 
-.reveal-delay-100 { transition-delay: 100ms; }
-.reveal-delay-200 { transition-delay: 200ms; }
-.reveal-delay-300 { transition-delay: 300ms; }
-.reveal-delay-400 { transition-delay: 400ms; } 
-.reveal-delay-500 { transition-delay: 500ms; }
-
-
+.reveal-delay-100 {
+  transition-delay: 100ms;
+}
+.reveal-delay-200 {
+  transition-delay: 200ms;
+}
+.reveal-delay-300 {
+  transition-delay: 300ms;
+}
+.reveal-delay-400 {
+  transition-delay: 400ms;
+}
+.reveal-delay-500 {
+  transition-delay: 500ms;
+}
 
 /* ─── Schematic Line Animation ────────────────────────────────────────────── */
 
