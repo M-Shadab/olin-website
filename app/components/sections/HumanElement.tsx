@@ -80,7 +80,7 @@ export default function HumanElement() {
       </div>
 
       {/* Copy Right */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-white bg-noise p-12 md:p-24 relative">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-off-white bg-noise p-12 md:p-24 relative">
         <div className="max-w-md relative z-10">
           <span className="block text-gold text-xs font-bold tracking-[0.2em] uppercase mb-6">
             The Human Element

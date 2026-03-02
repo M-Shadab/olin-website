@@ -158,7 +158,8 @@ body {
   transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
 .pillars-heading--visible .pillars-rule,
-.fw-heading--visible .pillars-rule {
+.fw-heading--visible .pillars-rule,
+.oo-heading--visible .pillars-rule {
   width: 80px !important;
 }
 
@@ -284,22 +285,19 @@ body {
   transform: translateY(0);
 }
 
-/* ── 2. Capability Cards ── */
-.oo-card--ready {
+/* ── 2. List Items ── */
+.oo-item--ready {
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(2px);
+  transform: translateY(12px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms),
-    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms);
-  will-change: opacity, transform, filter;
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--oo-delay, 0ms);
+  will-change: opacity, transform;
 }
 
-.oo-card--ready.oo-card--visible {
+.oo-item--ready.oo-item--visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0px);
 }
 
 /* ─── Generic Scroll Reveal Utilities ──────────────────────────────────────── */
